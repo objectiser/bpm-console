@@ -27,7 +27,7 @@ package org.jboss.bpm.console.client.report;
 public final class RenderDispatchEvent
 {
   String title;
-  String dispatchUrl;  
+  String dispatchUrl;
   String parameters = "None";
 
   public RenderDispatchEvent(String targetView, String dispatchUrl)

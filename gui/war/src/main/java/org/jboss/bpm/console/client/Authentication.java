@@ -216,7 +216,7 @@ public class Authentication
 
           if(response.getStatusCode()!=200)
           {
-            ConsoleLog.error(response.getText());  
+            ConsoleLog.error(response.getText());
           }
         }
 

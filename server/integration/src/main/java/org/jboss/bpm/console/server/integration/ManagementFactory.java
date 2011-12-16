@@ -28,7 +28,7 @@ import org.jboss.bpm.console.server.util.ServiceLoader;
 /**
  * Construct management implementation.
  * It uses the {@link org.jboss.bpm.console.server.util.ServiceLoader} to load concrete
- * factory implementations. 
+ * factory implementations.
  *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  * @author Thomas.Diesler@jboss.com
@@ -49,5 +49,5 @@ public abstract class ManagementFactory
   public abstract TaskManagement createTaskManagement();
 
   public abstract UserManagement createUserManagement();
-  
+
 }

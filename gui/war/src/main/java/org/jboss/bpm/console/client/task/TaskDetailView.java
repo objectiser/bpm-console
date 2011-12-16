@@ -57,7 +57,7 @@ public class TaskDetailView extends CaptionLayoutPanel
   {
 
     // render
-    super("Task details");    
+    super("Task details");
 
     super.setStyleName("bpm-detail-panel");
 

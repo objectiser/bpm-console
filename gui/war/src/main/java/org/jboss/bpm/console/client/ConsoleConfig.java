@@ -51,7 +51,7 @@ public class ConsoleConfig
   private String consoleServerUrl;
 
   private String defaultEditor;
-  
+
   public ConsoleConfig(String proxyUrl)
   {
     Dictionary theme = Dictionary.getDictionary("consoleConfig");
@@ -65,7 +65,7 @@ public class ConsoleConfig
     instanceSummaryReportFile = theme.get("instanceSummaryReportFile");
 
     defaultEditor = theme.get("defaultEditor");
-    
+
     if(null==proxyUrl)
     {
       // extract host

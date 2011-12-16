@@ -59,7 +59,7 @@ public class PreferencesView implements ViewInterface, WidgetProvider
   {
     this.controller = controller;
   }
-  
+
   public void provideWidget(ProvisioningCallback callback)
   {
     panel = new MosaicPanel(new BoxLayout(BoxLayout.Orientation.VERTICAL));

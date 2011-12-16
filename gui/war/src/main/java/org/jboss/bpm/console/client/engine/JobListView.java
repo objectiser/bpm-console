@@ -85,7 +85,7 @@ public class JobListView implements ViewInterface, WidgetProvider, DataDriven
   {
     controller = Registry.get(Controller.class);
   }
-  
+
   public void provideWidget(ProvisioningCallback callback)
   {
     panel = new MosaicPanel();
@@ -184,7 +184,7 @@ public class JobListView implements ViewInterface, WidgetProvider, DataDriven
       toolBar.add(
           new Button("Refresh", new ClickHandler() {
             public void onClick(ClickEvent clickEvent)
-            {              
+            {
               // force loading
               controller.handleEvent(
                   new Event(UpdateJobsAction.ID, null)
@@ -198,7 +198,7 @@ public class JobListView implements ViewInterface, WidgetProvider, DataDriven
           new Button("Execute", new ClickHandler() {
 
             public void onClick(ClickEvent clickEvent)
-            {              
+            {
               JobRef selection = getSelection();
               if(null==selection)
               {
@@ -270,7 +270,7 @@ public class JobListView implements ViewInterface, WidgetProvider, DataDriven
       };
 
       t.schedule(500);
-      
+
       controller.addAction(UpdateJobsAction.ID, new UpdateJobsAction());
 
       this.initialized = true;
@@ -302,7 +302,7 @@ public class JobListView implements ViewInterface, WidgetProvider, DataDriven
     if(this.jobs!=null)
     {
       reset();
-      
+
       final DefaultListModel<JobRef> model =
           (DefaultListModel<JobRef>) listBox.getModel();
 

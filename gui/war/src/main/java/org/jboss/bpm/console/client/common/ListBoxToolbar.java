@@ -38,7 +38,7 @@ public class ListBoxToolbar extends MosaicPanel
     setStyleName("bpm-toolbar-panel");
 
     toolPanel = new HorizontalPanel();
-    
+
     this.add(new HTML("<b>"+title+"</b>"), new ColumnLayoutData("80%"));
     this.add(toolPanel, new ColumnLayoutData("20%"));
   }

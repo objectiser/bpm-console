@@ -124,7 +124,7 @@ public class ProcessMgmtFacade
 
   /**
    * Enriches {@link org.jboss.bpm.console.client.model.ProcessDefinitionRef} with
-   * form and diagram URLs if applicable. 
+   * form and diagram URLs if applicable.
    */
   private Response decorateProcessDefintions( List<ProcessDefinitionRef> processDefinitions)
   {
@@ -387,7 +387,7 @@ public class ProcessMgmtFacade
     );
 
   }
-  
+
   @GET
   @Path("definition/history/{id}/nodeInfo")
   @Produces("application/json")

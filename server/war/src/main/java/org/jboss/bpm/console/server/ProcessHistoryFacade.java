@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.jboss.bpm.console.server;
 
@@ -26,7 +26,7 @@ import org.jboss.bpm.console.server.util.RsComment;
 import com.google.gson.Gson;
 
 /**
- * 
+ *
  * @author Jeff Yu
  * @date Mar 13, 2011
  */
@@ -37,18 +37,18 @@ import com.google.gson.Gson;
     project = {ProjectName.RIFTSAW}
 )
 public class ProcessHistoryFacade {
-	
+
 	private static final Log log = LogFactory.getLog(ProcessHistoryFacade.class);
-	
+
 	private ProcessHistoryPlugin historyPlugin;
-	
+
 	public ProcessHistoryPlugin getProcessHistoryPlugin() {
 		if (historyPlugin == null) {
 			historyPlugin = PluginMgr.load(ProcessHistoryPlugin.class);
 		}
 		return historyPlugin;
 	}
-	
+
 	@GET
 	@Produces("applications/json")
 	@Path("definition/{id}/instances")
@@ -65,7 +65,7 @@ public class ProcessHistoryFacade {
 
 		List<HistoryProcessInstanceRef> refs = getProcessHistoryPlugin().getHistoryProcessInstances(id, status, new Long(stime), new Long(etime), ckey);
 		HistoryProcessInstanceRefWrapper wrapper = new HistoryProcessInstanceRefWrapper(refs);
-		
+
 		return createJsonResponse(wrapper);
 	}
 
@@ -226,6 +226,6 @@ public class ProcessHistoryFacade {
              throw new NullPointerException(" " + name + " is null.");
          }
     }
-	
-	
+
+
 }

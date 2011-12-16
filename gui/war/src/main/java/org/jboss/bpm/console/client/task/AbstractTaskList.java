@@ -33,11 +33,11 @@ import java.util.List;
 
 /**
  * Base class for task lists.
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public abstract class AbstractTaskList implements ViewInterface
-{  
+{
   protected Controller controller;
   protected MosaicPanel taskList = null;
   protected ListBox<TaskRef> listBox;
@@ -65,7 +65,7 @@ public abstract class AbstractTaskList implements ViewInterface
     TaskRef selection = null;
     if(isInitialized() && listBox.getSelectedIndex()!=-1)
     {
-      selection = listBox.getItem( listBox.getSelectedIndex());      
+      selection = listBox.getItem( listBox.getSelectedIndex());
     }
     return selection;
   }

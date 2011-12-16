@@ -51,7 +51,7 @@ import java.util.Date;
  * window dimension.
  *
  * @see org.jboss.bpm.console.client.common.IFrameWindowCallback
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public class IFrameWindowPanel
@@ -73,7 +73,7 @@ public class IFrameWindowPanel
   private void createWindow()
   {
     windowPanel = new WindowPanel();
-    windowPanel.setAnimationEnabled(true);    
+    windowPanel.setAnimationEnabled(true);
 
     ScrollLayoutPanel layout = new ScrollLayoutPanel(new BoxLayout(BoxLayout.Orientation.VERTICAL));
     layout.setStyleName("bpm-window-layout");
@@ -82,7 +82,7 @@ public class IFrameWindowPanel
     HeaderLabel header = new HeaderLabel(title, true);
 
     layout.add(header, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
-  
+
     windowPanel.addWindowCloseListener(new WindowCloseListener() {
       public void onWindowClosed() {
         if(getCallback()!=null)
@@ -202,6 +202,6 @@ public class IFrameWindowPanel
 
   public void show()
   {
-    createWindow();    
+    createWindow();
   }
 }

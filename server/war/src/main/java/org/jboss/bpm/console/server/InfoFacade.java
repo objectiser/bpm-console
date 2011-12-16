@@ -105,7 +105,7 @@ public class InfoFacade
     if (request.getServletPath() != null && !"".equals(request.getServletPath())) {
     	rsServer = request.getContextPath() + request.getServletPath();
     }
-    
+
     RsDocBuilder rsDocBuilder = new RsDocBuilder(rsServer,rootResources);
     StringBuffer sb = rsDocBuilder.build2HTML(projectName);
     return Response.ok(sb.toString()).build();

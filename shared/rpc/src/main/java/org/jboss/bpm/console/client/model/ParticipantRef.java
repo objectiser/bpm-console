@@ -25,7 +25,7 @@ package org.jboss.bpm.console.client.model;
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public class ParticipantRef
-{  
+{
   private String type;
   private String idRef;
   private boolean isGroup;

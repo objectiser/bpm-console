@@ -53,8 +53,8 @@ public class ProcessDetailView extends CaptionLayoutPanel implements ViewInterfa
   public ProcessDetailView()
   {
     super("Process details");
-    super.setStyleName("bpm-detail-panel");    
-    
+    super.setStyleName("bpm-detail-panel");
+
     grid = new PropertyGrid(
         new String[] {"ID:", "Key:", "Name:", "Suspended:", "Package:", "Description:"}
     );

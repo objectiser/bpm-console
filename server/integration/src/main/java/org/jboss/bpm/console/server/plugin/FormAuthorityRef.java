@@ -34,7 +34,7 @@ public class FormAuthorityRef
   private Type currentType = null;
 
   private String referenceId;
-  
+
   public FormAuthorityRef(String referenceId)
   {
     this.referenceId = referenceId;

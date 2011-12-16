@@ -33,7 +33,7 @@ public class UpdateDetailsAction implements ActionInterface
 {
 
   public final static String ID = UpdateDetailsAction.class.getName();
-  
+
   public void execute(Controller controller, Object object)
   {
     DetailViewEvent event = (DetailViewEvent)object;
@@ -43,6 +43,6 @@ public class UpdateDetailsAction implements ActionInterface
     if(task!=null)
       view.update(task);
     else
-      view.clearView();    
+      view.clearView();
   }
 }

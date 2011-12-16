@@ -36,9 +36,9 @@ import java.util.List;
  * Retrieves the inital reporting config in order to setup the
  * {@link org.jboss.bpm.console.client.report.ReportLaunchPadView}
  *
- * @see org.jboss.bpm.console.client.report.ReportView#configure(java.util.List) 
+ * @see org.jboss.bpm.console.client.report.ReportView#configure(java.util.List)
  * @see org.jboss.bpm.console.client.report.ReportLaunchPadView#update(java.util.List)
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public class UpdateReportConfigAction extends AbstractRESTAction
@@ -70,9 +70,9 @@ public class UpdateReportConfigAction extends AbstractRESTAction
   public void handleSuccessfulResponse(
       final Controller controller, final Object event, Response response)
   {
-    String json = response.getText();    
+    String json = response.getText();
     List<ReportReference> reports = JSOParser.parseReportConfig(json);
     ReportView view = (ReportView)controller.getView(ReportView.ID);
-    view.configure(reports);    
+    view.configure(reports);
   }
 }

@@ -104,5 +104,5 @@ public class ActivityDiagramView extends ScrollLayoutPanel
 
         this.add(html);
         invalidate();
-    }    
+    }
 }

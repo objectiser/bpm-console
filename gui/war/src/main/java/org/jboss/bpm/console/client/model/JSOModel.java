@@ -134,7 +134,7 @@ public abstract class JSOModel extends JavaScriptObject {
       SimpleDateFormat df = new SimpleDateFormat();
       result = df.parse(value);
     }
-    
+
     return result;
   }
 

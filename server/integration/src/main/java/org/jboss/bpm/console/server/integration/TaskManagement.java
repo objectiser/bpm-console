@@ -32,7 +32,7 @@ import java.util.Map;
 public interface TaskManagement
 {
   /**
-   * fetch a single task   
+   * fetch a single task
    */
   TaskRef getTaskById(long taskId);
 
@@ -62,7 +62,7 @@ public interface TaskManagement
   List<TaskRef> getAssignedTasks(String idRef);
 
   /**
-   * get unassigned tasks where a user participates    
+   * get unassigned tasks where a user participates
    */
   List<TaskRef> getUnassignedTasks(String idRef, String participationType);
 }

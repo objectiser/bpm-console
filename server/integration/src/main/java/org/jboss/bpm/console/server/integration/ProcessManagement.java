@@ -46,7 +46,7 @@ public interface ProcessManagement
   ProcessInstanceRef newInstance(String defintionId);
 
   ProcessInstanceRef newInstance(String definitionId, Map<String, Object> processVars);
-  
+
   Map<String, Object> getInstanceData(String instanceId);
 
   void setInstanceData(String instanceId, Map<String, Object> data);
@@ -58,5 +58,5 @@ public interface ProcessManagement
   void setProcessState(String instanceId, ProcessInstanceRef.STATE nextState);
 
   void signalExecution(String executionId, String signal);
-  
+
 }

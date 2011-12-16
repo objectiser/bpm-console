@@ -41,7 +41,7 @@ public class JSONTree extends ScrollPanel
     TreeItem root = tree.addItem("message");
 
     parseObject(root, "root", JSONParser.parse(json));
-    
+
     this.add(tree);
   }
 
@@ -71,7 +71,7 @@ public class JSONTree extends ScrollPanel
 
   private void parseArray(TreeItem root, String key, JSONValue jsonValue)
   {
-    
+
   }
 
   private void parseObject(TreeItem root, String key, JSONValue topLevel)
@@ -79,7 +79,7 @@ public class JSONTree extends ScrollPanel
     JSONObject rootJSO = topLevel.isObject();
     if(null==rootJSO)
       throw new IllegalArgumentException("Not a JSON object: "+topLevel);
-        
+
     for(String innerKey : rootJSO.keySet())
     {
       JSONValue jsonValue = rootJSO.get(innerKey);

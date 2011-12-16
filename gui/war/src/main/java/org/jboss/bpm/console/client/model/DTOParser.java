@@ -35,7 +35,7 @@ import java.util.List;
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public class DTOParser
-{  
+{
   public static List<TaskRef> parseTaskReferenceList(String json)
   {
     ConsoleLog.debug("parse " + json);
@@ -196,9 +196,9 @@ public class DTOParser
     JSONWalk.JSONWrapper rootTokenJSON = JSONWalk.on(root).next("rootToken");
     if (rootTokenJSON != null) {
         JSONObject tokJso = rootTokenJSON.asObject();
-        
+
         TokenReference rootToken = parseTokenReference(tokJso);
-        processInstance.setRootToken(rootToken);    	
+        processInstance.setRootToken(rootToken);
     }
 
     return processInstance;
@@ -282,7 +282,7 @@ public class DTOParser
       String name = JSONWalk.on(item).next("name").asString();
       JSONWalk.JSONWrapper tsWrapper = JSONWalk.on(item).next("timestamp");
       long ts = tsWrapper != null ? tsWrapper.asLong() : -1;
-      
+
       DeploymentRef ref = new DeploymentRef(id, suspended);
       ref.setName(name);
       ref.setTimestamp(ts);
@@ -328,8 +328,8 @@ public class DTOParser
 
       JSONWalk.JSONWrapper tsEl = JSONWalk.on(item).next("timestamp");
       if(tsEl!=null)
-        ref.setTimestamp(tsEl.asLong());      
-      
+        ref.setTimestamp(tsEl.asLong());
+
       JSONWalk.JSONWrapper err = JSONWalk.on(item).next("errMsg");
       if(err!=null) // optional
         ref.setErrMsg(err.asString());
@@ -338,8 +338,8 @@ public class DTOParser
     }
 
     return result;
-  }  
-  
+  }
+
   public static List<ActiveNodeInfo> parseActiveNodeInfo(String json) {
     ConsoleLog.debug("Parse: " + json);
 
@@ -350,19 +350,19 @@ public class DTOParser
 
     if (root instanceof JSONArray) {
         JSONArray array = (JSONArray) root;
-        
+
         for (int i = 0; i < array.size(); i++) {
             JSONWalk walk = JSONWalk.on(array.get(i));
             JSONWrapper wrapper = walk.next("activeNode");
             JSONObject activeNode = wrapper.asObject();
-        
+
             int x = JSONWalk.on(activeNode).next("x").asInt();
             int y = JSONWalk.on(activeNode).next("y").asInt();
-        
+
             int width = JSONWalk.on(activeNode).next("width").asInt();
             int height = JSONWalk.on(activeNode).next("height").asInt();
             String name = JSONWalk.on(activeNode).next("name").asString();
-                        
+
             activeNodeInfos.add(
                 new ActiveNodeInfo(
                     -1, -1,

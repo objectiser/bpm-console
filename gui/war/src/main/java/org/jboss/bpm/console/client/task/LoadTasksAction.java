@@ -37,7 +37,7 @@ import java.util.List;
  * Loads a task list for a particular identity.
  *
  * @see org.jboss.bpm.console.client.task.AssignedTasksView
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public class LoadTasksAction extends AbstractRESTAction
@@ -57,7 +57,7 @@ public class LoadTasksAction extends AbstractRESTAction
 
   public RequestBuilder.Method getRequestMethod()
   {
-    return RequestBuilder.GET;  
+    return RequestBuilder.GET;
   }
 
   @Override
@@ -75,7 +75,7 @@ public class LoadTasksAction extends AbstractRESTAction
     AssignedTasksView view = (AssignedTasksView)controller.getView(AssignedTasksView.ID);
 
     view.update(identity, tasks);
-    
+
     ConsoleLog.info("Loaded " + tasks.size() + " tasks");
 
   }

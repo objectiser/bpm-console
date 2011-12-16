@@ -106,11 +106,11 @@ public class RsDocBuilder
       sb.append("<td>").append("").append("</td>"); // description
       sb.append("<td>").append(r.consume).append("</td>");
       sb.append("<td>").append(r.produce).append("</td>");
-      sb.append("</tr>");      
+      sb.append("</tr>");
     }
 
     sb.append("<tr><td colspan=5>&nbsp;</td></tr>");
-    
+
     return sb.toString();
   }
 
@@ -149,7 +149,7 @@ public class RsDocBuilder
     sb.append("<th>").append("Consumes").append("</th>");
     sb.append("<th>").append("Produces").append("</th>");
     sb.append("</tr>");
-    
+
     for(Class c : rootResources)
     {
       sb.append(

@@ -179,7 +179,7 @@ public class WorkspaceGenerator extends Generator
     sourceWriter.println("public " + className + "() { ");
     sourceWriter.indent();
     sourceWriter.println("super();");
-    // end constructor source generation 
+    // end constructor source generation
     sourceWriter.outdent();
     sourceWriter.println("}");
   }*/

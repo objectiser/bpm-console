@@ -51,7 +51,7 @@ public class SearchDefinitionView
   public SearchDefinitionView(ApplicationContext appContext, SearchDelegate delegate)
   {
     super(new BoxLayout(BoxLayout.Orientation.VERTICAL));
-    
+
     this.appContext = appContext;
     this.delegate = delegate;
     this.setPadding(5);

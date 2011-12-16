@@ -84,7 +84,7 @@ public class UpdateDeploymentsAction extends AbstractRESTAction
 
       // optional
       String deploymentId = (String)event;
-      if(deploymentId!=null)              
+      if(deploymentId!=null)
         view.select(deploymentId);
 
       // refresh process definitions

@@ -1,14 +1,14 @@
 Running in hosted mode:
 ----------------------
 
-Start the GWT shell with 
+Start the GWT shell with
 
 	mvn gwt:<run|debug>
 
 When the hosted browser is started, it's enough to hit the 'refresh' button to recompile
 and verfiy changes.
 
-NOTE: Really quick turnaround through 
+NOTE: Really quick turnaround through
 
 	mvn -Dhosted gwt:<run|debug>
 
@@ -18,7 +18,7 @@ NOTE: Really quick turnaround through
 Running in web mode:
 -------------------
 
-mvn package 
+mvn package
 
 Produces a war file in target/gwt-console.war,
 which can be deployed to a running jboss instance.

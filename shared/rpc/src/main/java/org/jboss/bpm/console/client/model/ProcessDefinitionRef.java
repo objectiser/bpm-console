@@ -28,10 +28,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 @XmlRootElement(name="processDefinition")
-public class ProcessDefinitionRef 
+public class ProcessDefinitionRef
 {
   private String id;
-  
+
   private String name;
   private long version;
   private String key;

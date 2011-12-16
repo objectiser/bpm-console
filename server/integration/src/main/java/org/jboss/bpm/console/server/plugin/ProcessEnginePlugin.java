@@ -28,7 +28,7 @@ import java.util.List;
 
 /**
  * Manages runtime aspects of the underlying process engine.
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public interface ProcessEnginePlugin
@@ -36,7 +36,7 @@ public interface ProcessEnginePlugin
   List<DeploymentRef> getDeployments();
 
   void deleteDeployment(String id);
-  
+
   void suspendDeployment(String id, boolean isSuspended);
 
   List<JobRef> getJobs();

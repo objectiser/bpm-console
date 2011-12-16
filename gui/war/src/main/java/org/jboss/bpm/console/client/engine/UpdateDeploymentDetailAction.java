@@ -46,6 +46,6 @@ public class UpdateDeploymentDetailAction implements ActionInterface
     {
       // update view
       view.update(ref);
-    }   
+    }
   }
 }

@@ -35,7 +35,7 @@ public class LoadInstanceActivityImage extends AbstractRESTAction
     }
 
     public String getUrl(Object event)
-    {        
+    {
         ProcessInstanceRef inst = (ProcessInstanceRef)event;
         return URLBuilder.getInstance().getActivityImage(inst.getDefinitionId(),inst.getId());
     }

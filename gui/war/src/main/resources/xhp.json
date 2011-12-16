@@ -8,7 +8,7 @@
         {"id": "birt",
          "url":"http://127.0.0.1:8080/gwt-console-server",
          "passthrough":true,
-         "contentType":"text/html"         
+         "contentType":"text/html"
         }
     ]
   }

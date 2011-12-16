@@ -64,6 +64,6 @@ public class BootstrapAction extends AbstractRESTAction
   public void handleSuccessfulResponse(final Controller controller, final Object event, Response response)
   {
     ServerStatus status = JSOParser.parseStatus(response.getText());
-    ServerPlugins.setStatus(status);    
+    ServerPlugins.setStatus(status);
   }
 }

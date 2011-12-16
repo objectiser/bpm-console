@@ -33,7 +33,7 @@ public class GsonFactory
    {
       Gson gson = new GsonBuilder()
         .setDateFormat("yyyy-MM-dd HH:mm:ss")
-        .registerTypeAdapter(java.sql.Timestamp.class, new SQLDateTypeAdapter()) 
+        .registerTypeAdapter(java.sql.Timestamp.class, new SQLDateTypeAdapter())
         .create();
       return gson;
    }

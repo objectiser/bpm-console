@@ -77,19 +77,19 @@ class ReportLaunchPadView extends MosaicPanel implements ViewInterface, DataDriv
 
     CaptionLayoutPanel header = new CaptionLayoutPanel("Report configuration");
     header.setStyleName("bpm-detail-panel");
-    
-    header.setLayout(new BoxLayout(BoxLayout.Orientation.HORIZONTAL));    
 
-    MosaicPanel templatePanel = new MosaicPanel(new BoxLayout(BoxLayout.Orientation.VERTICAL));    
+    header.setLayout(new BoxLayout(BoxLayout.Orientation.HORIZONTAL));
+
+    MosaicPanel templatePanel = new MosaicPanel(new BoxLayout(BoxLayout.Orientation.VERTICAL));
     description = new HTML();
 
-    dropBox = new com.google.gwt.user.client.ui.ListBox(false);  
+    dropBox = new com.google.gwt.user.client.ui.ListBox(false);
     dropBox.addChangeHandler(new ChangeHandler() {
 
       public void onChange(ChangeEvent changeEvent)
       {
         String reportTitle = dropBox.getItemText(dropBox.getSelectedIndex());
-        selectForm(reportTitle);                
+        selectForm(reportTitle);
       }
     });
 
@@ -98,9 +98,9 @@ class ReportLaunchPadView extends MosaicPanel implements ViewInterface, DataDriv
     // ----
 
     inputPanel = new MosaicPanel();
-    
+
     // ---
-    
+
     header.add(templatePanel, new BoxLayoutData("250 px", "100 px"));
     header.add(inputPanel, new BoxLayoutData(BoxLayoutData.FillStyle.BOTH));
 
@@ -154,7 +154,7 @@ class ReportLaunchPadView extends MosaicPanel implements ViewInterface, DataDriv
       if(r.getTitle().equals(template))
         return r;
     }
-    
+
     return null;
   }
 
@@ -174,7 +174,7 @@ class ReportLaunchPadView extends MosaicPanel implements ViewInterface, DataDriv
 
     // default form
     selectForm(dropBox.getItemText(0));
-    
+
     Registry.get(ApplicationContext.class).refreshView();
   }
 
@@ -188,8 +188,8 @@ class ReportLaunchPadView extends MosaicPanel implements ViewInterface, DataDriv
   }
 
   public void displayReport(String title, String dispatchUrl)
-  {    
-    reportFrame.setFrameUrl(dispatchUrl);    
+  {
+    reportFrame.setFrameUrl(dispatchUrl);
   }
 
   public void reset()

@@ -58,7 +58,7 @@ public class StartNewInstanceAction extends AbstractRESTAction
   public void handleSuccessfulResponse(final Controller controller, final Object event, Response response)
   {
     final ProcessDefinitionRef def = (ProcessDefinitionRef)event;
-    
+
     // force reload instance list
     controller.handleEvent(
         new Event(UpdateInstancesAction.ID, def)

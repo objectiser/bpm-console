@@ -26,38 +26,38 @@ import org.jboss.bpm.console.client.model.ProcessInstanceRef;
 import org.jboss.bpm.console.client.model.TokenReference;
 
 /**
- * 
+ *
  * @author Maciej Swiderski <swiderski.maciej@gmail.com>
  *
  */
 public class SignalInstanceEvent extends InstanceEvent {
 
-  
-  private String signalName;
-  
-  private TokenReference token;
-  
-  private int index;
-  
 
-  
+  private String signalName;
+
+  private TokenReference token;
+
+  private int index;
+
+
+
   public int getIndex() {
     return index;
   }
 
   public SignalInstanceEvent(ProcessDefinitionRef definition, ProcessInstanceRef instance, TokenReference token, String signalName, int index) {
     super(definition, instance);
-    
+
     this.signalName = signalName;
     this.token = token;
     this.index = index;
   }
-  
+
   public String getSignalName() {
     return signalName;
   }
-  
-  
+
+
   public TokenReference getToken() {
     return token;
   }

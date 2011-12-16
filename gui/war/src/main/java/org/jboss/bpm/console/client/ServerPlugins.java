@@ -52,7 +52,7 @@ public class ServerPlugins
         if(p.getType().equals(type))
         {
           match = p.isAvailable();
-          break;                                    
+          break;
         }
       }
     }

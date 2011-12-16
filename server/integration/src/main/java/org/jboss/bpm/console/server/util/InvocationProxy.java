@@ -53,7 +53,7 @@ public class InvocationProxy implements java.lang.reflect.InvocationHandler
 
     InitialContext ctx = new InitialContext();
     UserTransaction tx = (UserTransaction)ctx.lookup("UserTransaction");
-    
+
 
     try
     {

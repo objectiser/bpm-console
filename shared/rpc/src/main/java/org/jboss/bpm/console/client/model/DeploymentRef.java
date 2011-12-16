@@ -38,7 +38,7 @@ public class DeploymentRef
   private String name;
 
   private long timestamp;
-  
+
   private List<String> definitions = new ArrayList<String>();
 
   private List<String> resourceNames = new ArrayList<String>();

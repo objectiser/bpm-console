@@ -92,7 +92,7 @@ public class ErraiApplication implements EntryPoint, SubscribeListener
         );
 
         bus.addSubscribeListener(this);
-        
+
         Controller mainController = new com.mvc4g.client.Controller();
         Registry.set(Controller.class, mainController);
 

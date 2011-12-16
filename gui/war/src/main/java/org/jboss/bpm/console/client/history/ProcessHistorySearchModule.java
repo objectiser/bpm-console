@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.jboss.bpm.console.client.history;
 
@@ -17,10 +17,10 @@ import com.google.gwt.core.client.RunAsyncCallback;
  */
 @LoadTool(name="History Query", group = "Processes", icon = "historySearchIcon", priority= 3 )
 public class ProcessHistorySearchModule implements WidgetProvider {
-	
+
 	private ProcessHistorySearchView instance;
-	
-	
+
+
 	@Override
 	public void provideWidget(final ProvisioningCallback callback) {
 	    GWT.runAsync(

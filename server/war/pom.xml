@@ -70,7 +70,7 @@
             <artifactId>log4j</artifactId>
           </exclusion>
          </exclusions>
-     </dependency>      
+     </dependency>
 
     <dependency>
       <groupId>javax.ejb</groupId>
@@ -126,7 +126,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
         </exclusion>
-          
+
           <exclusion>
               <groupId>javassist</groupId>
               <artifactId>javassist</artifactId>
@@ -324,7 +324,7 @@
       </plugin>
 
     </plugins>
-    
+
     <finalName>gwt-console-server</finalName>
   </build>
 

@@ -107,14 +107,14 @@ public class DeploymentListView implements ViewInterface, WidgetProvider, DataDr
     controller.addAction(UpdateDeploymentDetailAction.ID, new UpdateDeploymentDetailAction());
     controller.addAction(DeleteDeploymentAction.ID, new DeleteDeploymentAction());
     controller.addAction(SuspendDeploymentAction.ID, new SuspendDeploymentAction());
-    controller.addAction(ResumeDeploymentAction.ID, new ResumeDeploymentAction());    
-    //controller.addAction(ViewDeploymentAction.ID, new ViewDeploymentAction());    
+    controller.addAction(ResumeDeploymentAction.ID, new ResumeDeploymentAction());
+    //controller.addAction(ViewDeploymentAction.ID, new ViewDeploymentAction());
 
     controller.addView(DeploymentListView.ID, this);
 
 
     callback.onSuccess(panel);
-    
+
   }
 
   private ListBox createListBox()
@@ -200,7 +200,7 @@ public class DeploymentListView implements ViewInterface, WidgetProvider, DataDr
             public void onClick(ClickEvent clickEvent)
             {
               reset();
-              
+
               // force loading
               controller.handleEvent(
                   new Event(UpdateDeploymentsAction.ID, null)

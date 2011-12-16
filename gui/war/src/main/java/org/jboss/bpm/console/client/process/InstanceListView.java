@@ -306,7 +306,7 @@ public class InstanceListView implements WidgetProvider, ViewInterface, DataDriv
                     }
                 }
             }
-            );            
+            );
 
 
             deleteBtn = new Button("Delete", new ClickHandler()
@@ -474,7 +474,7 @@ public class InstanceListView implements WidgetProvider, ViewInterface, DataDriv
                     )
             );
 
-            startBtn.setEnabled(true);            
+            startBtn.setEnabled(true);
             deleteBtn.setEnabled(true);
             refreshBtn.setEnabled(true);
         }
