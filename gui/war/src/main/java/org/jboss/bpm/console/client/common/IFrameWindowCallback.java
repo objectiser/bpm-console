@@ -27,5 +27,5 @@ package org.jboss.bpm.console.client.common;
 public interface IFrameWindowCallback
 {
   void onWindowClosed();
-  
+
 }

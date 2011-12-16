@@ -93,7 +93,7 @@ public class HistoryInstanceListView implements WidgetProvider, ViewInterface, D
   {
 
     this.appContext = Registry.get(ApplicationContext.class);
-    
+
     panel = new MosaicPanel();
     panel.setPadding(0);
 
@@ -390,7 +390,7 @@ public class HistoryInstanceListView implements WidgetProvider, ViewInterface, D
                 "ActivityName", "StartTime", "EndTime", "Duration"
             }
         );
-    
+
     listBox.setCellRenderer(new ListBox.CellRenderer<HistoryActivityInstanceRef>() {
       public void renderCell(ListBox<HistoryActivityInstanceRef> listBox, int row, int column,
                              HistoryActivityInstanceRef item) {

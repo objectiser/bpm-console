@@ -31,7 +31,7 @@ import java.util.Properties;
  *
  * @author Thomas.Diesler@jboss.com
  * @author Heiko.Braun@jboss.com
- * 
+ *
  * @since 14-Dec-2006
  */
 public abstract class ServiceLoader

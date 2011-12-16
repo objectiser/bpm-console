@@ -53,6 +53,6 @@ public class ServerStatusModule implements WidgetProvider
         }
 
     );
-    
+
   }
 }

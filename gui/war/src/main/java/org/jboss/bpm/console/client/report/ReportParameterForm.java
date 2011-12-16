@@ -57,7 +57,7 @@ public class ReportParameterForm extends MosaicPanel
   {
     MosaicPanel p = new MosaicPanel();
     p.setPadding(5);
-    p.add(createForm(reportRef, callback));    
+    p.add(createForm(reportRef, callback));
     return p;
   }
 
@@ -87,7 +87,7 @@ public class ReportParameterForm extends MosaicPanel
 
             callback.onSumbit(values);
           }
-        });    
+        });
 
     Map<String,String> preferenceValues = readPrefs(reportRef);
 
@@ -99,7 +99,7 @@ public class ReportParameterForm extends MosaicPanel
       final TextBox textBox = new TextBox();
       String prefValue = preferenceValues.get(reportParam.getName());
       if(prefValue !=null)
-        textBox.setText(prefValue);      
+        textBox.setText(prefValue);
 
       // retain reference to values
       final InputField field = new InputField()
@@ -118,7 +118,7 @@ public class ReportParameterForm extends MosaicPanel
 
       fields.add(field);
 
-      form.add(new HTML("<b>"+promptText+"</b><br/>"+helpText));           
+      form.add(new HTML("<b>"+promptText+"</b><br/>"+helpText));
       form.add(textBox);
     }
 
@@ -126,7 +126,7 @@ public class ReportParameterForm extends MosaicPanel
     if(!hasParameters)
     {
       form.add(new HTML("This report doesn't require any paramters.")
-      , new GridLayoutData(2,1, HasHorizontalAlignment.ALIGN_CENTER, HasVerticalAlignment.ALIGN_TOP));      
+      , new GridLayoutData(2,1, HasHorizontalAlignment.ALIGN_CENTER, HasVerticalAlignment.ALIGN_TOP));
     }
 
     // submit
@@ -159,7 +159,7 @@ public class ReportParameterForm extends MosaicPanel
     Map<String,String> values = new HashMap<String,String>();
     String name = reportRef.getTitle().replaceAll(" ","_");
     String prefKey = "bpm-form-"+name;
-    
+
     if(prefs.has(prefKey))
     {
       String prefValue = prefs.get(prefKey);

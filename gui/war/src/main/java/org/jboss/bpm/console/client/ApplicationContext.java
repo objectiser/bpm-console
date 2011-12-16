@@ -23,12 +23,12 @@ package org.jboss.bpm.console.client;
 
 /**
  * Provides context information to console components and plugins.
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public interface ApplicationContext
 {
-  
+
   void displayMessage(String message, boolean isError);
 
   Authentication getAuthentication();
@@ -36,5 +36,5 @@ public interface ApplicationContext
   ConsoleConfig getConfig();
 
   void refreshView();
-    
+
 }

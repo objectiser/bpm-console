@@ -41,7 +41,7 @@ public class BufferedResponseWrapper extends HttpServletResponseWrapper
    public BufferedResponseWrapper(HttpServletResponse httpServletResponse)
    {
       super(httpServletResponse);
-      output=new ByteArrayOutputStream();      
+      output=new ByteArrayOutputStream();
    }
 
    public byte[] getData() {

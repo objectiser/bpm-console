@@ -86,7 +86,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
     panel = new MosaicPanel();
     panel.setWidgetSpacing(0);
     panel.setPadding(0);
-    
+
     listBox = createListBox();
     final Controller controller = Registry.get(Controller.class);
     controller.addView(ID, this);
@@ -138,7 +138,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
       toolBox.setLayout(new BoxLayout(BoxLayout.Orientation.HORIZONTAL));
 
       // toolbar
-      final ToolBar toolBar = new ToolBar();      
+      final ToolBar toolBar = new ToolBar();
       ClickHandler clickHandler = new ClickHandler()
       {
         public void onClick(ClickEvent clickEvent)
@@ -146,7 +146,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
           reload();
         }
       };
-      
+
       toolBar.add(
           new Button("Refresh", clickHandler
           )
@@ -166,7 +166,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
       dropBox.addChangeHandler(new ChangeHandler() {
 
         public void onChange(ChangeEvent changeEvent)
-        {          
+        {
           switch (dropBox.getSelectedIndex())
           {
             case 0:
@@ -269,21 +269,21 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
                 "<b>Process</b>", "v."//, "Version", "Suspended"
             }
         );
-    
-    listBox.setFocus(true);    
+
+    listBox.setFocus(true);
 
     listBox.setCellRenderer(new ListBox.CellRenderer<ProcessDefinitionRef>() {
       public void renderCell(ListBox<ProcessDefinitionRef> listBox, int row, int column,
                              ProcessDefinitionRef item) {
         switch (column) {
           case 0:
-            
+
             String name = item.getName();
             String s = name.indexOf("}") > 0 ?
                 name.substring(name.lastIndexOf("}")+1, name.length()) : name;
 
             String color= item.isSuspended() ? "#CCCCCC" : "#000000";
-            String text = "<div style=\"color:"+color+"\">"+ s +"</div>";            
+            String text = "<div style=\"color:"+color+"\">"+ s +"</div>";
 
             listBox.setWidget(row, column, new HTML(text));
             break;
@@ -301,7 +301,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
 
     listBox.setMinimumColumnWidth(0, 190);
     listBox.setColumnResizePolicy(AbstractScrollTable.ColumnResizePolicy.MULTI_CELL);
-    
+
     listBox.addRowSelectionHandler(
         new RowSelectionHandler()
         {
@@ -330,7 +330,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
           }
         }
     );
-    
+
     return listBox;
   }
 
@@ -349,7 +349,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
 
     // clear instance panel
     controller.handleEvent(new Event(ClearInstancesAction.ID, null));
-    
+
     // clear details
     /*controller.handleEvent(
         new Event(UpdateProcessDetailAction.ID, null)
@@ -376,7 +376,7 @@ public class DefinitionListView implements WidgetProvider, ViewInterface, DataDr
       reset();
 
       final DefaultListModel<ProcessDefinitionRef> model =
-          (DefaultListModel<ProcessDefinitionRef>) listBox.getModel();      
+          (DefaultListModel<ProcessDefinitionRef>) listBox.getModel();
 
       List<ProcessDefinitionRef> tmp = new ArrayList<ProcessDefinitionRef>();
       for(ProcessDefinitionRef def : definitions)

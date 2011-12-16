@@ -29,7 +29,7 @@ import java.util.Date;
 
 /**
  * Embeds an HTML report.
- *  
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public class ReportFrame extends MosaicPanel
@@ -39,14 +39,14 @@ public class ReportFrame extends MosaicPanel
 
   public ReportFrame()
   {
-    super();    
+    super();
     setPadding(0);
-    
+
     // report frame
     frame = new Frame();
     DOM.setStyleAttribute(frame.getElement(), "border", "1px solid #E8E8E8");
     DOM.setStyleAttribute(frame.getElement(), "backgroundColor", "#ffffff");
-    this.add(frame);    
+    this.add(frame);
   }
 
   public void setFrameUrl(String url)

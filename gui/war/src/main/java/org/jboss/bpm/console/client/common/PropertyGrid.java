@@ -54,7 +54,7 @@ public class PropertyGrid extends ScrollLayoutPanel
     this.fieldNames = fieldDesc;
 
     this.add(grid);
-    
+
     initReset();
   }
 

@@ -61,7 +61,7 @@ public class InstanceDataView extends MosaicPanel implements ViewInterface, Lazy
     super();
     this.setPadding(5);
     ApplicationContext appContext = Registry.get(ApplicationContext.class);
-    isRiftsawInstance = appContext.getConfig().getProfileName().equals("BPEL Console");    
+    isRiftsawInstance = appContext.getConfig().getProfileName().equals("BPEL Console");
   }
 
   public void initialize()
@@ -75,7 +75,7 @@ public class InstanceDataView extends MosaicPanel implements ViewInterface, Lazy
           );
 
       listBox.setColumnResizePolicy(AbstractScrollTable.ColumnResizePolicy.MULTI_CELL);
-      
+
       listBox.setCellRenderer(new ListBox.CellRenderer<DataEntry>() {
         public void renderCell(ListBox<DataEntry> listBox, int row, int column,
                                DataEntry item) {
@@ -157,7 +157,7 @@ public class InstanceDataView extends MosaicPanel implements ViewInterface, Lazy
             && valueNode.hasChildNodes()
             && Node.TEXT_NODE == valueNode.getChildNodes().item(0).getNodeType())
         {
-          dataEntry.value = valueNode.getFirstChild().getNodeValue();          
+          dataEntry.value = valueNode.getFirstChild().getNodeValue();
         }
         else
         {

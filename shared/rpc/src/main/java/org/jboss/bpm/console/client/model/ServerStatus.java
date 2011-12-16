@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class ServerStatus
 {
   List<PluginInfo> plugins = new ArrayList<PluginInfo>();
-  
+
   public List<PluginInfo> getPlugins()
   {
     return plugins;

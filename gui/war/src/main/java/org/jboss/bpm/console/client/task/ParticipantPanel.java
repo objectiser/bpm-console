@@ -108,7 +108,7 @@ class ParticipantPanel extends MosaicPanel implements ViewInterface
               controller.handleEvent(
                   new Event(AssignTaskAction.ID, new AssignEvent(selection, currentTask))
               );
-            }            
+            }
           }
         }
     );
@@ -129,7 +129,7 @@ class ParticipantPanel extends MosaicPanel implements ViewInterface
     currentTask = task;
 
     tree.clear();
-    
+
     TreeItem root = tree.addItem(PARTICIPANTS);
 
     // groups
@@ -147,7 +147,7 @@ class ParticipantPanel extends MosaicPanel implements ViewInterface
     }
 
     root.setState(true); // open users
-    
+
     this.invalidate();
   }
 

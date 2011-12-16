@@ -75,7 +75,7 @@ import java.util.Map;
  * @author: Heiko Braun <hbraun@redhat.com>
  * @author: Jeff Yu <cyu@redhat.com>
  * @date: Mar 11, 2010
- */                                                                                                          
+ */
 @LoadTool(name="Execution History", group = "Processes")
 public class ExecutionHistoryView implements WidgetProvider, ViewInterface
 {
@@ -112,7 +112,7 @@ public class ExecutionHistoryView implements WidgetProvider, ViewInterface
     private final static int DATASET_TERMINATED = 2;
 
     private List<ProcessDefinitionRef> processDefinitions;
-    
+
     public void provideWidget(ProvisioningCallback callback)
     {
 
@@ -124,7 +124,7 @@ public class ExecutionHistoryView implements WidgetProvider, ViewInterface
         controller.addAction(LoadChartProcessInstancesAction.ID, new LoadChartProcessInstancesAction());
 
         LayoutPanel panel = new LayoutPanel(new BoxLayout(BoxLayout.Orientation.VERTICAL));
-                
+
         final ToolBar toolBar = new ToolBar();
         panel.add(toolBar, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
 
@@ -135,7 +135,7 @@ public class ExecutionHistoryView implements WidgetProvider, ViewInterface
             public void onClick(ClickEvent clickEvent) {
                 controller.handleEvent(new Event(GetProcessDefinitionsAction.ID, null));
             }
-        });        
+        });
         toolBar.add(menuButton);
 
 
@@ -234,7 +234,7 @@ public class ExecutionHistoryView implements WidgetProvider, ViewInterface
 
         buttonPanel = new LayoutPanel(new BoxLayout(BoxLayout.Orientation.VERTICAL));
         buttonPanel.add(includeFailed);
-        
+
         // ------------
         panel.add(contents, new BoxLayoutData(BoxLayoutData.FillStyle.BOTH));
 
@@ -450,7 +450,7 @@ public class ExecutionHistoryView implements WidgetProvider, ViewInterface
             }
         });
 
-        // ------        
+        // ------
 
         final ViewReadyCallback callback = new ViewReadyCallback() {
             public void onViewReady(View view) {

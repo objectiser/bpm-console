@@ -48,7 +48,7 @@ public class ProcessInstanceRef
    * the end state of an instance
    */
   public static enum RESULT {COMPLETED, FAILED, ERROR, EXITED, OBSOLETE};
-  
+
   private Date startDate;
   private Date endDate;
 
@@ -214,7 +214,7 @@ public class ProcessInstanceRef
           {
             nextLifecycle =  new Lifecycle(instance, next);
             instance.suspended = false;
-            instance.endDate = new Date();            
+            instance.endDate = new Date();
             break;
           }
           else
@@ -300,7 +300,7 @@ public class ProcessInstanceRef
   {
     if(getState()!=STATE.ENDED)
       throw new IllegalArgumentException("Cannot set end result in state "+getState());
-    
+
     this.endResult = endResult;
   }
 

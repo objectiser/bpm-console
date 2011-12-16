@@ -44,7 +44,7 @@ public class ClaimTaskAction extends AbstractRESTAction
   public String getUrl(Object event)
   {
     TaskIdentityEvent claimEvent = (TaskIdentityEvent)event;
-    
+
     return URLBuilder.getInstance().getTaskAssignURL(
         claimEvent.getTask().getId(), claimEvent.getIdentity()
     );

@@ -34,7 +34,7 @@ public class HeaderLabel extends Label
     super(string);
     applyStyle(false);
   }
-  
+
   public HeaderLabel(String string, boolean invert)
   {
     super(string);
@@ -42,7 +42,7 @@ public class HeaderLabel extends Label
   }
 
   private void applyStyle(boolean invert)
-  {    
+  {
     if(invert)
       this.setStyleName("bpm-label-header-invert");
     else

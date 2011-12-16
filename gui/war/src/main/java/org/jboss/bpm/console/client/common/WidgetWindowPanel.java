@@ -47,7 +47,7 @@ public class WidgetWindowPanel
         window = new WindowPanel(title);
         window.setAnimationEnabled(true);
         window.setWidget(widget);
-        
+
         WindowUtil.addMaximizeButton(window, Caption.CaptionRegion.RIGHT);
         WindowUtil.addMinimizeButton(window, Caption.CaptionRegion.RIGHT);
 

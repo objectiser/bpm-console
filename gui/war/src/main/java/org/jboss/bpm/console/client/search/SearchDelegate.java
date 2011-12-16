@@ -28,5 +28,5 @@ public interface SearchDelegate
 {
   void handleResult(String procDefId);
 
-  String getActionName(); 
+  String getActionName();
 }

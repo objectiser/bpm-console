@@ -78,14 +78,14 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
   private PagingPanel pagingPanel;
 
   private MosaicPanel panel;
-  
+
   public void provideWidget(ProvisioningCallback callback)
   {
 
     panel = new MosaicPanel();
     panel.setWidgetSpacing(0);
     panel.setPadding(0);
-    
+
     listBox = createListBox();
     final Controller controller = Registry.get(Controller.class);
     controller.addView(ID, this);
@@ -97,7 +97,7 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
 
 
     initialize();
-    
+
     Timer t = new Timer()
     {
       @Override
@@ -136,7 +136,7 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
       toolBox.setLayout(new BoxLayout(BoxLayout.Orientation.HORIZONTAL));
 
       // toolbar
-      final ToolBar toolBar = new ToolBar();      
+      final ToolBar toolBar = new ToolBar();
       ClickHandler clickHandler = new ClickHandler()
       {
         public void onClick(ClickEvent clickEvent)
@@ -144,7 +144,7 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
           reload();
         }
       };
-      
+
       toolBar.add(
           new Button("Refresh", clickHandler
           )
@@ -153,7 +153,7 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
       toolBox.add(toolBar, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
 
       definitionList.add(toolBox, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
-    
+
       definitionList.add(listBox, new BoxLayoutData(BoxLayoutData.FillStyle.BOTH));
       pagingPanel = new PagingPanel(
           new PagingCallback()
@@ -171,7 +171,7 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
       );
       definitionList.add(pagingPanel,new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
 
-      
+
       panel.add(definitionList);
 
       // deployments model listener
@@ -222,21 +222,21 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
                 "<b>Process</b>", "v."//, "Version", "Suspended"
             }
         );
-    
-    listBox.setFocus(true);    
+
+    listBox.setFocus(true);
 
     listBox.setCellRenderer(new ListBox.CellRenderer<ProcessDefinitionRef>() {
       public void renderCell(ListBox<ProcessDefinitionRef> listBox, int row, int column,
                              ProcessDefinitionRef item) {
         switch (column) {
           case 0:
-            
+
             String name = item.getName();
             String s = name.indexOf("}") > 0 ?
                 name.substring(name.lastIndexOf("}")+1, name.length()) : name;
 
             String color= item.isSuspended() ? "#CCCCCC" : "#000000";
-            String text = "<div style=\"color:"+color+"\">"+ s +"</div>";            
+            String text = "<div style=\"color:"+color+"\">"+ s +"</div>";
 
             listBox.setWidget(row, column, new HTML(text));
             break;
@@ -254,7 +254,7 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
 
     listBox.setMinimumColumnWidth(0, 190);
     listBox.setColumnResizePolicy(AbstractScrollTable.ColumnResizePolicy.MULTI_CELL);
-    
+
     listBox.addRowSelectionHandler(
         new RowSelectionHandler()
         {
@@ -264,7 +264,7 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
             if(index!=-1)
             {
               ProcessDefinitionRef item = listBox.getItem(index);
-                
+
               // load history instances
               controller.handleEvent(
                   new Event(
@@ -272,13 +272,13 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
                       item
                   )
               );
-                
-              
+
+
             }
           }
         }
     );
-    
+
     return listBox;
   }
 
@@ -316,14 +316,14 @@ public class DefinitionHistoryListView implements WidgetProvider, ViewInterface,
       reset();
 
       final DefaultListModel<ProcessDefinitionRef> model =
-          (DefaultListModel<ProcessDefinitionRef>) listBox.getModel();      
+          (DefaultListModel<ProcessDefinitionRef>) listBox.getModel();
 
       List<ProcessDefinitionRef> tmp = new ArrayList<ProcessDefinitionRef>();
       for(ProcessDefinitionRef def : definitions)
       {
-        
+
         tmp.add(def);
-        
+
       }
 
       for(ProcessDefinitionRef def : (List<ProcessDefinitionRef>) pagingPanel.trim(tmp) )

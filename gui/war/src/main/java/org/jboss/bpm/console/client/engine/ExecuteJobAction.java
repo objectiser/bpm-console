@@ -58,7 +58,7 @@ public class ExecuteJobAction extends AbstractRESTAction
     String id = (String)event;
 
     ConsoleLog.debug("Executed jod with id " + id  + " and response from server is " + response.getText());
-    
+
     // reload job list
     controller.handleEvent(
         new Event(UpdateJobsAction.ID, null)

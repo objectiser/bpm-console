@@ -25,7 +25,7 @@ import org.jboss.bpm.console.client.model.TaskRef;
 
 /**
  * Composite event that represents Identities working on tasks.
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public final class TaskIdentityEvent

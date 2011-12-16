@@ -33,6 +33,6 @@ import java.util.Map;
 public interface FormDispatcherPlugin
 {
   URL getDispatchUrl(FormAuthorityRef ref);
-  
+
   DataHandler provideForm(FormAuthorityRef ref);
 }

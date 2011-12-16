@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.jboss.bpm.console.client.history;
 
@@ -8,15 +8,15 @@ package org.jboss.bpm.console.client.history;
  * @date Mar 17, 2011
  */
 public class ProcessSearchEvent {
-	
+
 	private String definitionKey;
-	
+
 	private String key;
-	
+
 	private String status;
-	
+
 	private long startTime;
-	
+
 	private long endTime;
 
 	public String getDefinitionKey() {
@@ -58,7 +58,7 @@ public class ProcessSearchEvent {
 	public void setEndTime(long endTime) {
 		this.endTime = endTime;
 	}
-	
-	
+
+
 
 }

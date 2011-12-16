@@ -31,7 +31,7 @@ public class LoginAction implements ActionInterface
 {
 
   public void execute(Controller controller, Object object)
-  {    
+  {
     LoginView loginView = (LoginView)controller.getView(LoginView.NAME);
     loginView.display();
   }

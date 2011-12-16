@@ -64,7 +64,7 @@ public class UpdateSearchDefinitionsAction extends AbstractRESTAction
     List<ProcessDefinitionRef> definitions = JSOParser.parseProcessDefinitions(response.getText());
     SearchDefinitionView view = (SearchDefinitionView)controller.getView(target);
     view.update(definitions);
-    
+
     ConsoleLog.info("Loaded " + definitions.size() + " process definitions");
   }
 }

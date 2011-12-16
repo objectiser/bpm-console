@@ -48,9 +48,9 @@ public class UpdateDefinitionsAction extends AbstractRESTAction
   {
     return ID;
   }
-  
+
   public String getUrl(Object event)
-  {    
+  {
     return URLBuilder.getInstance().getProcessDefinitionsURL();
   }
 
@@ -71,7 +71,7 @@ public class UpdateDefinitionsAction extends AbstractRESTAction
 
     Explorer view = (Explorer) controller.getView(Explorer.class.getName());
     if(view!=null) // may not be initialized (lazy)
-    {      
+    {
       List<ProcessDefinitionRef> definitions =
           JSOParser.parseProcessDefinitions(response.getText());
       view.update(definitions);

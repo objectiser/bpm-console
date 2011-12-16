@@ -42,10 +42,10 @@ public class MergedProcessView implements WidgetProvider
   public void provideWidget(ProvisioningCallback callback)
   {
     Controller controller = Registry.get(Controller.class);
-    
+
     panel = new MosaicPanel();
-    panel.setPadding(0);    
-    
+    panel.setPadding(0);
+
     definitionView = new DefinitionListView();
     instanceView = new InstanceListView();
 
@@ -81,7 +81,7 @@ public class MergedProcessView implements WidgetProvider
     );
 
     panel.add(splitPanel);
-    
+
     callback.onSuccess(panel);
   }
 }

@@ -83,7 +83,7 @@ public class InstanceDetailView extends CaptionLayoutPanel implements ViewInterf
     private ProcessDefinitionRef currentDefintion;
 
     private boolean isRiftsawInstance;
-    
+
     private  ListBox<String> processEvents;
 
     public InstanceDetailView()
@@ -173,7 +173,7 @@ public class InstanceDetailView extends CaptionLayoutPanel implements ViewInterf
 
     private void createDiagramWindow(ProcessInstanceRef inst)
     {
-        
+
     	org.gwt.mosaic.ui.client.layout.LayoutPanel layout = new ScrollLayoutPanel();
         layout.setStyleName("bpm-window-layout");
         layout.setPadding(5);
@@ -181,15 +181,15 @@ public class InstanceDetailView extends CaptionLayoutPanel implements ViewInterf
         Label header = new Label("Instance: "+inst.getId());
         header.setStyleName("bpm-label-header");
         layout.add(header, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
-        
+
         final DecoratedTabLayoutPanel tabPanel = new DecoratedTabLayoutPanel(false);
         tabPanel.setPadding(5);
-        
+
         MosaicPanel diaViewLayout = new MosaicPanel();
         diaViewLayout.add(diagramView, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
-        
+
         tabPanel.add(diagramView, "View");
-  
+
         processEvents = new ListBox<String>(new String[]{"Process Events"});
         processEvents.setCellRenderer(new CellRenderer<String>(){
 
@@ -202,16 +202,16 @@ public class InstanceDetailView extends CaptionLayoutPanel implements ViewInterf
 					break;
 				default:
 					throw new RuntimeException("Should not happen!");
-				}				
+				}
 			}
         });
-        
+
         MosaicPanel sourcePanel = new MosaicPanel();
-        sourcePanel.add(processEvents, new BoxLayoutData(BoxLayoutData.FillStyle.VERTICAL));        
+        sourcePanel.add(processEvents, new BoxLayoutData(BoxLayoutData.FillStyle.VERTICAL));
         tabPanel.add(sourcePanel, "Source");
-        
+
         tabPanel.selectTab(0);
-        
+
         layout.add(tabPanel, new BoxLayoutData(BoxLayoutData.FillStyle.BOTH));
 
         diagramWindowPanel = new WidgetWindowPanel(
@@ -230,17 +230,17 @@ public class InstanceDetailView extends CaptionLayoutPanel implements ViewInterf
             model.add(formatResult(value.getValue()));
         }
     }
-    
+
     private String formatResult(String value) {
     	StringBuffer sbuffer = new StringBuffer();
     	StringTokenizer st = new StringTokenizer(value, "~");
     	sbuffer.append(st.nextToken() + " : ");
-    	
+
     	while (st.hasMoreTokens()) {
     		sbuffer.append("<br/>");
     		sbuffer.append(st.nextToken());
     	}
-    	
+
     	return sbuffer.toString();
     }
 
@@ -276,7 +276,7 @@ public class InstanceDetailView extends CaptionLayoutPanel implements ViewInterf
 
         String[] values = new String[] {
                 def.getName(),
-                instance.getId(),                
+                instance.getId(),
                 String.valueOf( instance.getState() ),
                 dateFormat.format(instance.getStartDate()),
                 currentNodeName

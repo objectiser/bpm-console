@@ -106,7 +106,7 @@ public class URLBuilder
     public String getActivityImage(String processId, String instanceId)
     {
         String encodedId = URL.encode(processId);
-        return config.getConsoleServerUrl() + "/rs/process/definition/"+ encodedId+ "/image/"+instanceId;        
+        return config.getConsoleServerUrl() + "/rs/process/definition/"+ encodedId+ "/image/"+instanceId;
     }
 
 
@@ -244,7 +244,7 @@ public class URLBuilder
     {
         return config.getConsoleServerUrl() + "/rs/process/definition/history/" + definitionId;
     }
-    
+
     public String getProcessHistoryURL(String definitionId, String querystring) {
         String encodedId = URL.encode(definitionId);
     	return config.getConsoleServerUrl()+"/rs/history/definition/"+ encodedId + "/instances?" + querystring;

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.jboss.bpm.console.client.history;
 
@@ -23,15 +23,15 @@ import com.mvc4g.client.Controller;
  * @date Mar 17, 2011
  */
 public class LoadProcessHistoryAction extends AbstractRESTAction {
-	
+
 	public static final String ID = LoadProcessHistoryAction.class.getName();
-		
+
 	@Override
 	public String getId() {
 		return ID;
 	}
-	
-	
+
+
 	@Override
 	protected DataDriven getDataDriven(Controller controller) {
 		return (ProcessHistoryInstanceListView)controller.getView(ProcessHistoryInstanceListView.ID);
@@ -54,7 +54,7 @@ public class LoadProcessHistoryAction extends AbstractRESTAction {
 		return URLBuilder.getInstance().getProcessHistoryURL(searchEvent.getDefinitionKey(), sbuffer.toString());
 	}
 
-	
+
 	@Override
 	public Method getRequestMethod() {
 		return RequestBuilder.GET;
@@ -68,7 +68,7 @@ public class LoadProcessHistoryAction extends AbstractRESTAction {
 		ProcessHistoryInstanceListView view = (ProcessHistoryInstanceListView) controller.getView(ProcessHistoryInstanceListView.ID);
 		List<HistoryProcessInstanceRef> ref = JSOParser.parseProcessDefinitionHistory(response.getText());
 		view.update(ref);
-		
+
 		ConsoleLog.debug("Loaded " + ref.size() + " process instance(s) : " + response.getText());
 	}
 

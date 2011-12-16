@@ -34,7 +34,7 @@ import com.mvc4g.client.Event;
 
 /**
  * Signals execution
- * 
+ *
  * @author Maciej Swiderski <swiderski.maciej@gmail.com>
  */
 class SignalExecutionAction extends AbstractRESTAction
@@ -68,7 +68,7 @@ class SignalExecutionAction extends AbstractRESTAction
     final SignalInstanceEvent def = (SignalInstanceEvent)event;
     InstanceListView view = (InstanceListView) controller.getView(InstanceListView.ID);
     if(view!=null) view.renderSignalListBox(def.getIndex());
-    
+
     // delay reload of instance list to avoid incorrect activity being fetched
     // for instance when going through decision node
     Timer t = new Timer()
@@ -84,6 +84,6 @@ class SignalExecutionAction extends AbstractRESTAction
     };
 
     t.schedule(500);
-    
+
   }
 }

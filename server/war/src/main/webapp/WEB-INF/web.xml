@@ -49,7 +49,7 @@
 
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>Resteasy</web-resource-name>      
+      <web-resource-name>Resteasy</web-resource-name>
       <url-pattern>/rs/process/*</url-pattern>
       <url-pattern>/rs/task/*</url-pattern>
       <url-pattern>/rs/form/*</url-pattern>

@@ -36,7 +36,7 @@ public abstract class AbstractView extends MosaicPanel
   private AbstractImagePrototype icon;
 
   protected boolean initialized;
-  
+
   protected AbstractView()
   {
   }

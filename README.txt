@@ -2,7 +2,7 @@
 Prerequisites
 -------------
 
-The server module needs to be deployed on a running jboss instance, 
+The server module needs to be deployed on a running jboss instance,
 along with a process engine that provides an implementation of the integration layer.
 See http://www.jboss.org/community/wiki/BPMConsoleReference for further explanations.
 
@@ -16,12 +16,12 @@ But the basics steps to get going are as follows:
 	mvn clean install
 
 2) Make sure both process engine and the server module are installed on JBoss AS instance
-	
+
 	http://www.jboss.org/community/wiki/BPMConsoleReference
 
 3) Boot the AS and start the gwt console in hosted mode
 
-	See gui/war/README.txt for further information 
+	See gui/war/README.txt for further information
 
 
 Publish console artifacts

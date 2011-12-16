@@ -22,7 +22,7 @@ public class SimpleDateFormat {
    private String format;
    private DateLocale locale = new DateLocale();
    public static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss";
-   
+
 
    /**
     * Gets the support locale for formatting and parsing dates
@@ -45,7 +45,7 @@ public class SimpleDateFormat {
    }
 
    /**
-    * Use a custom format   
+    * Use a custom format
     */
    public SimpleDateFormat(String pattern) {
       format = pattern;

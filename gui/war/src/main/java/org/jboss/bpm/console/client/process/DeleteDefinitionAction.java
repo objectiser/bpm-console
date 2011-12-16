@@ -49,7 +49,7 @@ public class DeleteDefinitionAction extends AbstractRESTAction
 
   public RequestBuilder.Method getRequestMethod()
   {
-    return RequestBuilder.POST;  
+    return RequestBuilder.POST;
   }
 
   public void handleSuccessfulResponse(final Controller controller, final Object event, Response response)

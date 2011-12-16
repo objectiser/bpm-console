@@ -289,7 +289,7 @@ public class LoginView implements ViewInterface
         panel.setPadding(0);
 
         MosaicPanel box1 = new MosaicPanel(new BoxLayout());
-        box1.setPadding(0);        
+        box1.setPadding(0);
         MosaicPanel box2 = new MosaicPanel(new BoxLayout());
         box2.setPadding(0);
 

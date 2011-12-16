@@ -35,7 +35,7 @@ import org.jboss.bpm.console.client.model.DiagramInfo;
 public interface GraphViewerPlugin
 {
   /**
-   * Check {@link #getDiagramURL(String)} != null before invoking.   
+   * Check {@link #getDiagramURL(String)} != null before invoking.
    */
   byte[] getProcessImage(String processId);
 
@@ -44,10 +44,10 @@ public interface GraphViewerPlugin
   List<ActiveNodeInfo> getActiveNodeInfo(String instanceId);
 
   /**
-   * Can be null, in case no diagram is associated with the process   
+   * Can be null, in case no diagram is associated with the process
    */
   URL getDiagramURL(String id);
-  
+
   /**
    * Collects node information (such as coordinates) for given processDefinitionId and selected activities.
    * Both arguments must be specified.

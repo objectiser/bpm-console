@@ -86,7 +86,7 @@ public class AssignedTasksView extends AbstractTaskList implements WidgetProvide
 
     panel.add(taskList, new BorderLayoutData(BorderLayout.Region.CENTER));
     panel.add(detailsView, new BorderLayoutData(BorderLayout.Region.SOUTH, 10 , 200));
-    
+
     controller.addView(AssignedTasksView.ID, this);
 
     callback.onSuccess(panel);
@@ -98,7 +98,7 @@ public class AssignedTasksView extends AbstractTaskList implements WidgetProvide
     {
       // workaround
       OpenTasksView.registerCommonActions(controller);
-      
+
       taskList = new MosaicPanel( new BoxLayout(BoxLayout.Orientation.VERTICAL));
       taskList.setPadding(0);
       taskList.setWidgetSpacing(0);
@@ -258,7 +258,7 @@ public class AssignedTasksView extends AbstractTaskList implements WidgetProvide
       );
 
       this.taskList.add(pagingPanel, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
-    
+
       detailsView = new TaskDetailView(false);
       controller.addView("AssignedDetailView", detailsView);
       detailsView.initialize();
@@ -297,7 +297,7 @@ public class AssignedTasksView extends AbstractTaskList implements WidgetProvide
       };
 
       t.schedule(500);
-      
+
       isInitialized = true;
     }
   }

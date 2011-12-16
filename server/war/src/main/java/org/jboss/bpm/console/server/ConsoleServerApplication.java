@@ -42,7 +42,7 @@ public class ConsoleServerApplication extends Application
     singletons.add(new ProcessMgmtFacade());
     singletons.add(new TaskListFacade());
     singletons.add(new TaskMgmtFacade());
-    singletons.add(new UserMgmtFacade());    
+    singletons.add(new UserMgmtFacade());
     singletons.add(new EngineFacade());
     singletons.add(new FormProcessingFacade());
     singletons.add(new ReportFacade() );

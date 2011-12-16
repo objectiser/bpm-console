@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.jboss.bpm.console.client.history;
 
@@ -34,23 +34,23 @@ import com.mvc4g.client.ViewInterface;
  * @date: Mar 02, 2011
  */
 public class ProcessHistorySearchView implements WidgetProvider, ViewInterface {
-	
+
 	public static final String ID = ProcessHistorySearchView.class.getName();
-	
+
 	private Controller controller;
-	
+
 	private ListBox processStatusList;
-	
+
 	private ListBox definitionList;
-	
+
 	private TextBox correlationKey;
-	
+
 	private DateBox startTime;
-	
+
 	private DateBox endTime;
 
     private ProvisioningCallback callback;
-			
+
 	public ProcessHistorySearchView() {
 		this.controller = Registry.get(Controller.class);
 
@@ -58,14 +58,14 @@ public class ProcessHistorySearchView implements WidgetProvider, ViewInterface {
 		this.controller.addAction(LoadProcessHistoryAction.ID, new LoadProcessHistoryAction());
         this.controller.addAction(LoadProcessDefinitionsAction.ID, new LoadProcessDefinitionsAction());
 	}
-	
+
 	@Override
 	public void provideWidget(final ProvisioningCallback callback) {
 
         controller.handleEvent(new Event(LoadProcessDefinitionsAction.ID, null));
 
 		this.callback = callback;
-		
+
 	}
 
 	public void initialize(final List<ProcessDefinitionRef> processDefinitions) {
@@ -76,7 +76,7 @@ public class ProcessHistorySearchView implements WidgetProvider, ViewInterface {
 
 		final ToolBar toolbar = new ToolBar();
 		panel.add(toolbar, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
-		
+
 		toolbar.add(new Button("Search", new ClickHandler() {
 
 			@Override
@@ -106,63 +106,63 @@ public class ProcessHistorySearchView implements WidgetProvider, ViewInterface {
 					edate = new Date();
 				}
 				String ckey = correlationKey.getValue();
-				
+
 				ProcessSearchEvent event = new ProcessSearchEvent();
 				event.setDefinitionKey(definitionId);
 				event.setStatus(theStatus);
 				event.setStartTime(theDate.getTime());
 				event.setEndTime(edate.getTime());
 				event.setKey(ckey);
-				
+
 				controller.handleEvent(new Event(LoadProcessHistoryAction.ID, event));
 			}
-			
+
 		}) );
-		
+
 		final MosaicPanel formPanel = new MosaicPanel(new BoxLayout(BoxLayout.Orientation.VERTICAL));
 		panel.add(formPanel, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
 
 		BoxLayoutData bld1 = new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL);
         bld1.setPreferredWidth("130px");
-        
+
         final MosaicPanel processDefBox = new MosaicPanel(new BoxLayout());
 		processDefBox.add(new Label("Process Definition: "), bld1);
-		
+
 		definitionList = new ListBox();
 		for (ProcessDefinitionRef ref : processDefinitions) {
 			definitionList.addItem(ref.getName());
 		}
 		processDefBox.add(definitionList);
-				
-        formPanel.add(processDefBox);       
-        formPanel.add(createProcessStatusListBox(bld1));		
-        formPanel.add(createCorrelationKeyTextBox(bld1));		
-        formPanel.add(createStartTimeDateBox(bld1));        
+
+        formPanel.add(processDefBox);
+        formPanel.add(createProcessStatusListBox(bld1));
+        formPanel.add(createCorrelationKeyTextBox(bld1));
+        formPanel.add(createStartTimeDateBox(bld1));
         formPanel.add(createEndTimeDateBox(bld1));
 
-		
+
 		ProcessHistoryInstanceListView listview = new ProcessHistoryInstanceListView();
 		final DecoratedTabLayoutPanel tabPanel = new DecoratedTabLayoutPanel(false);
 		listview.provideWidget(new ProvisioningCallback(){
 
 			@Override
 			public void onSuccess(Widget instance) {
-				tabPanel.add(instance, "History Instances");			
+				tabPanel.add(instance, "History Instances");
 			}
 
 			@Override
 			public void onUnavailable() {
-				
+
 			}
-			
+
 		});
-		
+
 		panel.add(tabPanel, new BoxLayoutData(BoxLayoutData.FillStyle.BOTH));
 
         callback.onSuccess(panel);
 	}
 
-	
+
 	private MosaicPanel createEndTimeDateBox(BoxLayoutData bld1) {
 		MosaicPanel box4 = new MosaicPanel(new BoxLayout());
 		endTime = new DateBox();
@@ -199,7 +199,7 @@ public class ProcessHistorySearchView implements WidgetProvider, ViewInterface {
 		processStatusList = new ListBox();
 		processStatusList.addItem("COMPLETED");
 		processStatusList.addItem("FAILED");
-		processStatusList.addItem("TERMINATED");		
+		processStatusList.addItem("TERMINATED");
 		box1.add(new Label("Process Status: "), bld1);
 		box1.add(processStatusList);
 		return box1;

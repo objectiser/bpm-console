@@ -18,6 +18,6 @@
 
   <modules>
     <module>profiles</module>
-    <module>war</module>    
+    <module>war</module>
   </modules>
 </project>

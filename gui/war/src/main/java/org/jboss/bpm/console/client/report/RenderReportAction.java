@@ -91,7 +91,7 @@ public class RenderReportAction implements ActionInterface
                   view.displayReport(event.getTitle(), event.getDispatchUrl());
                 }
                 else
-                {                  
+                {
                   final String msg = response.getText().equals("") ? "Unknown error" : response.getText();
                   handleError(
                       controller,

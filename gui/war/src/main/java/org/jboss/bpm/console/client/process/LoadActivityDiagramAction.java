@@ -67,5 +67,5 @@ public class LoadActivityDiagramAction extends AbstractRESTAction
     ActivityDiagramView view = (ActivityDiagramView) controller.getView(ActivityDiagramView.ID);
     view.update(new ActivityDiagramResultEvent(URLBuilder.getInstance().getProcessImageURL(inst.getDefinitionId()), activeNodeInfos));
     }
-  
+
 }

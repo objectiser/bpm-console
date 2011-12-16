@@ -37,12 +37,12 @@ public class MosaicPanel extends org.gwt.mosaic.ui.client.layout.LayoutPanel
 
   protected MosaicPanel(Element elem)
   {
-    super(elem);    
+    super(elem);
   }
 
   protected MosaicPanel(Element elem, LayoutManager layout)
   {
-    super(elem, layout);    
+    super(elem, layout);
   }
 
   public MosaicPanel(LayoutManager layout)
@@ -50,5 +50,5 @@ public class MosaicPanel extends org.gwt.mosaic.ui.client.layout.LayoutPanel
     super(layout);
     setPadding(5);
   }
-    
+
 }

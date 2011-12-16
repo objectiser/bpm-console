@@ -92,9 +92,9 @@ public class JSOParser
         start, end,
         suspended
     );
-    
+
     JSOModel rootTokenJson = root.getObject("rootToken");
-    
+
     if (rootTokenJson != null) {
       TokenReference rootToken = parseTokenReference(rootTokenJson);
       processInstance.setRootToken(rootToken);
@@ -117,23 +117,23 @@ public class JSOParser
     tokenReference.setId(rootToken.get("id"));
     tokenReference.setCurrentNodeName(rootToken.get("currentNodeName"));
     tokenReference.setCanBeSignaled(rootToken.getBoolean("canBeSignaled"));
-    
+
     if (rootToken.hasKey("name")) {
       tokenReference.setName(rootToken.get("name"));
     }
-    
+
     JsArray<JSOModel> tokenChildrenJson = rootToken.getArray("children");
     // parse children elements
     if (tokenChildrenJson != null) {
       List<TokenReference> children = new ArrayList<TokenReference>();
-      
+
       for (int i = 0; i < tokenChildrenJson.length(); i++) {
         children.add(parseTokenReference(tokenChildrenJson.get(i)));
       }
-      
+
       tokenReference.setChildren(children);
     }
-    
+
     JsArray<JSOModel> tokenSignalsJson = rootToken.getArray("availableSignals");
     // parse availableSignals elements
     if (tokenSignalsJson != null) {
@@ -142,10 +142,10 @@ public class JSOParser
       for (int i = 0; i < tokenSignalsJson.length(); i++) {
         availableSignals.add(tokenSignalsJson.get(i).toString());
       }
-      
+
       tokenReference.setAvailableSignals(availableSignals);
     }
-    
+
     return tokenReference;
   }
 
@@ -201,7 +201,7 @@ public class JSOParser
       JSOModel item = plugins.get(i);
       String type = item.get("type");
       boolean avail = item.getBoolean("available");
-      status.getPlugins().add( new PluginInfo(type, avail) );  
+      status.getPlugins().add( new PluginInfo(type, avail) );
     }
 
     return status;
@@ -221,15 +221,15 @@ public class JSOParser
       }
       return refs;
   }
-  
+
   public static List<HistoryActivityInstanceRef> parseProcessInstanceHistory(String json)
   {
-   
+
     List<HistoryActivityInstanceRef> results = new ArrayList<HistoryActivityInstanceRef>();
     JSOModel rootModel = JSOModel.fromJson(json);
-    
+
     JsArray<JSOModel> historyEntires = rootModel.getArray("historyEntires");
-    
+
     for(int i=0; i<historyEntires.length(); i++)
     {
       JSOModel entry = historyEntires.get(i);
@@ -239,7 +239,7 @@ public class JSOParser
     return results;
   }
 
-  
+
   public static HistoryActivityInstanceRef parseProcessInstanceHistory(JSOModel rootModel)
   {
     HistoryActivityInstanceRef def = new HistoryActivityInstanceRef();
@@ -250,18 +250,18 @@ public class JSOParser
     def.setExecutionId(rootModel.get("executionId"));
     def.setDuration(rootModel.getLong("duration"));
 
-    
+
     return def;
   }
-  
+
   public static List<HistoryProcessInstanceRef> parseProcessDefinitionHistory(String json)
   {
-   
+
     List<HistoryProcessInstanceRef> results = new ArrayList<HistoryProcessInstanceRef>();
     JSOModel rootModel = JSOModel.fromJson(json);
-    
+
     JsArray<JSOModel> historyEntires = rootModel.getArray("historyEntires");
-    
+
     for(int i=0; i<historyEntires.length(); i++)
     {
       JSOModel entry = historyEntires.get(i);
@@ -270,7 +270,7 @@ public class JSOParser
 
     return results;
   }
-  
+
   public static HistoryProcessInstanceRef parseProcessDefinitionHistory(JSOModel rootModel)
   {
     HistoryProcessInstanceRef def = new HistoryProcessInstanceRef();
@@ -284,7 +284,7 @@ public class JSOParser
     def.setKey(rootModel.get("key"));
     def.setDuration(rootModel.getLong("duration"));
 
-    
+
     return def;
   }
 }

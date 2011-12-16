@@ -47,9 +47,9 @@ public class UpdateHistoryDefinitionsAction extends AbstractRESTAction
   {
     return ID;
   }
-  
+
   public String getUrl(Object event)
-  {    
+  {
     return URLBuilder.getInstance().getProcessDefinitionsURL();
   }
 

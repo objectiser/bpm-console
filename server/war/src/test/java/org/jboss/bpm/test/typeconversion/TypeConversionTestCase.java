@@ -44,7 +44,7 @@ public class TypeConversionTestCase extends TestCase
     javaPayload.put("illegal type", new IllegalType());
     javaPayload.put("77illegal name % $$ - 1", "Hi There");
     Payload2XML t = new Payload2XML();
-    System.out.println(t.convert("SampleProcess", javaPayload).toString());  
+    System.out.println(t.convert("SampleProcess", javaPayload).toString());
   }
 
 }

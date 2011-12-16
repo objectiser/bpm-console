@@ -31,7 +31,7 @@ import org.jboss.bpm.console.client.model.DeploymentRef;
 
 /**
  * List resources associated with a process deployment.
- * 
+ *
  * @author Heiko.Braun <heiko.braun@jboss.com>
  */
 public class ResourcePanel extends MosaicPanel
@@ -61,7 +61,7 @@ public class ResourcePanel extends MosaicPanel
 
       this.add(propGrid);
       this.add(resources, new BoxLayoutData(BoxLayoutData.FillStyle.BOTH));
-      
+
       this.initialized = true;
     }
   }
@@ -88,7 +88,7 @@ public class ResourcePanel extends MosaicPanel
     HTML html = new HTML(sb.toString());
     resources.clear();
     resources.add(html);
-    
+
     propGrid.update(new String[]{deployment.getId()});
   }
 

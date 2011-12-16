@@ -44,7 +44,7 @@ public class ReportView implements ViewInterface, WidgetProvider
   public final static String ID = ReportView.class.getName();
 
   private Controller controller;
-  private boolean isInitialized; 
+  private boolean isInitialized;
   private ReportLaunchPadView coverpanel;
 
   private MosaicPanel panel;
@@ -59,7 +59,7 @@ public class ReportView implements ViewInterface, WidgetProvider
 
     controller.addView(ReportView.ID, this);
     controller.addAction(UpdateReportConfigAction.ID, new UpdateReportConfigAction());
-    
+
     // ----
 
     Timer t = new Timer()
@@ -89,7 +89,7 @@ public class ReportView implements ViewInterface, WidgetProvider
       coverpanel = new ReportLaunchPadView();
       panel.add(coverpanel);
 
-      // views and actions      
+      // views and actions
       controller.addView(ReportLaunchPadView.ID, coverpanel);
 
       controller.addAction(UpdateSearchDefinitionsAction.ID, new UpdateSearchDefinitionsAction());
@@ -107,7 +107,7 @@ public class ReportView implements ViewInterface, WidgetProvider
   public void configure(List<ReportReference> reports)
   {
     // update coverview
-    coverpanel.update(reports);    
+    coverpanel.update(reports);
   }
 
   public void displayReport(String title, String dispatchUrl)

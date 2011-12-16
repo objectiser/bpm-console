@@ -55,7 +55,7 @@ public class DeploymentDetailView extends CaptionLayoutPanel implements ViewInte
 
   Button suspendBtn;
   Button resumeBtn;
-  
+
   public DeploymentDetailView()
   {
     super("Deployment details");
@@ -101,7 +101,7 @@ public class DeploymentDetailView extends CaptionLayoutPanel implements ViewInte
 
     resumeBtn =  new Button("Activate", new ClickHandler() {
       public void onClick(ClickEvent clickEvent)
-      {        
+      {
         DeploymentRef deploymentRef = getSelection();
         if(deploymentRef!=null)
         {
@@ -134,7 +134,7 @@ public class DeploymentDetailView extends CaptionLayoutPanel implements ViewInte
     btnLayout.add(suspendBtn, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
     btnLayout.add(resumeBtn, new BoxLayoutData(BoxLayoutData.FillStyle.HORIZONTAL));
     propLayout.add(btnLayout);
-    
+
     // properties
     final DeckLayoutPanel deck = new DeckLayoutPanel();
     deck.add(propLayout);
@@ -188,7 +188,7 @@ public class DeploymentDetailView extends CaptionLayoutPanel implements ViewInte
     };
 
     resumeBtn.setEnabled(deployment.isSuspended());
-    suspendBtn.setEnabled(!resumeBtn.isEnabled());    
+    suspendBtn.setEnabled(!resumeBtn.isEnabled());
 
     grid.update(values);
     resourcePanel.update(deployment);

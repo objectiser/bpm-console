@@ -37,7 +37,7 @@ public class IconHeader extends MosaicPanel
     super(new BoxLayout(BoxLayout.Orientation.HORIZONTAL));
     setPadding(5);
 
-    this.add(icon.createImage());                                                 
+    this.add(icon.createImage());
     this.add(new HTML("<b>"+title+"</b>"));
   }
 }
