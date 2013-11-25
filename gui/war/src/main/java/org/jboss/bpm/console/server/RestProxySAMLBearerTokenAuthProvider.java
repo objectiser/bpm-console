@@ -20,7 +20,8 @@ import java.security.KeyPair;
 import java.security.KeyStore;
 import java.util.Map;
 
-import org.overlord.commons.auth.jboss7.SAMLBearerTokenUtil;
+import org.overlord.commons.auth.util.SAMLAssertionUtil;
+import org.overlord.commons.auth.util.SAMLBearerTokenUtil;
 
 /**
  * An auth provider that uses SAML bearer token authentication.
@@ -66,7 +67,7 @@ public class RestProxySAMLBearerTokenAuthProvider implements RestProxyAuthProvid
      * S-RAMP Atom API.
      */
     private String createSAMLBearerTokenAssertion() {
-        String samlAssertion = SAMLBearerTokenUtil.createSAMLAssertion(getIssuer(), getService());
+        String samlAssertion = SAMLAssertionUtil.createSAMLAssertion(getIssuer(), getService());
         if (isSignAssertions()) {
             try {
                 KeyStore keystore = SAMLBearerTokenUtil.loadKeystore(getKeystorePath(), getKeystorePassword());
