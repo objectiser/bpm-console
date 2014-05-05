@@ -412,6 +412,7 @@
       </build>
     </profile>
 
+    <!-- Riftsaw -->
     <profile>
       <id>riftsaw</id>
       <activation>
@@ -444,6 +445,27 @@
         </plugins>
       </build>
     </profile>
+
+
+    <!-- Running on Jetty -->
+    <profile>
+      <id>jetty</id>
+      <activation>
+        <property>
+          <name>platform</name>
+          <value>jetty</value>
+        </property>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.jboss.bpm</groupId>
+          <artifactId>gwt-console-server-integration</artifactId>
+          <version>${project.version}</version>
+          <scope>provided</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+
   </profiles>
 
 </project>
