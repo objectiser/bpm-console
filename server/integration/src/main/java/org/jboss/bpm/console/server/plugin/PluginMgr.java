@@ -21,13 +21,12 @@
  */
 package org.jboss.bpm.console.server.plugin;
 
-import org.jboss.bpm.console.server.utils.InvocationProxy;
-import org.jboss.bpm.console.server.utils.ServiceLoader;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.overlord.commons.services.ServiceRegistryUtil;
 
 /**
  * Loads plugins through the {@link org.jboss.bpm.console.server.utils.ServiceLoader}.
@@ -51,10 +50,7 @@ public class PluginMgr
     boolean failedBefore = failedToResolve.contains(type.getName());
     if(failedBefore) return null;
 
-    T pluginImpl = (T) ServiceLoader.loadService(
-        type.getName(), null
-    );
-
+    T pluginImpl = ServiceRegistryUtil.getSingleService(type);
 
     if(pluginImpl!=null)
     {

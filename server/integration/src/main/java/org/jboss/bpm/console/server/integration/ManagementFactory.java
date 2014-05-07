@@ -23,7 +23,7 @@ package org.jboss.bpm.console.server.integration;
 
 // $Id: $
 
-import org.jboss.bpm.console.server.utils.ServiceLoader;
+import org.overlord.commons.services.ServiceRegistryUtil;
 
 /**
  * Construct management implementation.
@@ -37,11 +37,7 @@ public abstract class ManagementFactory
 {
   public static ManagementFactory newInstance()
   {
-    return (ManagementFactory)
-        ServiceLoader.loadService(
-            ManagementFactory.class.getName(),
-            "org.jbpm.integration.console.ManagementFactoryImpl"
-        );
+      return ServiceRegistryUtil.getSingleService(ManagementFactory.class);
   }
 
   public abstract ProcessManagement createProcessManagement();

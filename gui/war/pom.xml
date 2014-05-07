@@ -245,13 +245,19 @@
         <dependency>
           <groupId>org.overlord</groupId>
           <artifactId>overlord-commons-auth</artifactId>
-          <version>2.0.0-SNAPSHOT</version>
+          <version>${overlord-commons.version}</version>
           <scope>provided</scope>
         </dependency>
         <dependency>
           <groupId>org.overlord</groupId>
           <artifactId>overlord-commons-config</artifactId>
-          <version>2.0.0-SNAPSHOT</version>
+          <version>${overlord-commons.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.overlord</groupId>
+          <artifactId>overlord-commons-osgi</artifactId>
+          <version>${overlord-commons.version}</version>
+          <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -323,6 +329,13 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.9</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.osgi</groupId>
+          <artifactId>org.osgi.core</artifactId>
+          <version>4.2.0</version>
+          <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -801,7 +814,114 @@
             </build>
         </profile>
 
-               
+
+        <!-- Running on Fuse -->
+        <profile>
+          <id>fuse</id>
+          <activation>
+            <property>
+              <name>platform</name>
+              <value>fuse</value>
+            </property>
+          </activation>
+          <build>
+            <plugins>
+              <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                  <execution>
+                    <id>regex-property</id>
+                    <goals>
+                      <goal>regex-property</goal>
+                    </goals>
+                    <configuration>
+                      <name>project.version.osgi</name>
+                      <value>${project.version}</value>
+                      <regex>-SNAPSHOT</regex>
+                      <replacement>.Snapshot</replacement>
+                      <failIfNoMatch>false</failIfNoMatch>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                  <archive>
+                    <manifestEntries>
+                      <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+                      <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                      <Bundle-Version>${project.version.osgi}</Bundle-Version>
+                      <Bundle-Name>${project.name}</Bundle-Name>
+                      <Web-ContextPath>/bpel-console</Web-ContextPath>
+                      <Webapp-Context>/bpel-console</Webapp-Context>
+                      <Import-Package>
+                        javax.servlet.http,
+                        javax.servlet,
+                        org.slf4j,
+                        org.slf4j.spi,
+                        org.apache.commons.io,
+                        javassist.bytecode,
+                        javassist.bytecode.annotation,
+                        javax.xml.transform.stream,
+                        javax.xml.namespace,
+                        javax.xml.datatype,
+                        javax.xml.bind,
+                        javax.ws.rs.core,
+                        javax.ws.rs,
+                        javax.xml.transform,
+                        javax.naming,
+                        javax.activation,
+                        org.apache.commons.codec.binary,
+                        org.apache.commons.configuration,
+                        org.apache.commons.configuration.reloading,
+                        org.apache.commons.configuration.interpol,
+                        org.apache.commons.lang.text,
+                        org.eclipse.jetty.plus.jaas,
+                        org.eclipse.jetty.server.handler,
+                        org.eclipse.jetty.servlet,
+                        org.eclipse.jetty.security,
+                        org.eclipse.jetty.jndi,
+                        org.apache.karaf.jaas.boot.principal,
+                        org.jboss.bpm.console.server.plugin,
+                        org.jboss.bpm.console.server.integration,
+                        org.jboss.bpm.console.client.model,
+                        org.osgi.framework,
+                        org.osgi.framework.wiring,
+                        org.overlord.commons.auth.util,
+                        org.overlord.commons.osgi.vfs
+                      </Import-Package>
+                      <Bundle-ClassPath>
+                        .,WEB-INF/classes,
+                        WEB-INF/lib/activity-monitoring-ui-lib-${activity.monitor.version}.jar,
+                        WEB-INF/lib/chronoscope-2.0_jboss.jar,
+                        WEB-INF/lib/chronoscope-api-2.0_jboss.jar,
+                        WEB-INF/lib/commons-io-1.4.jar,
+                        WEB-INF/lib/commons-logging-1.1.1.jar,
+                        WEB-INF/lib/dom4j-1.6.jar,
+                        WEB-INF/lib/errai-bus-1.1-Final.jar,
+                        WEB-INF/lib/errai-common-1.1-Final.jar,
+                        WEB-INF/lib/google-collections-1.0.jar,
+                        WEB-INF/lib/google-gin-1.0.jar,
+                        WEB-INF/lib/guice-2.0-aopalliance.jar,
+                        WEB-INF/lib/guice-2.0.jar,
+                        WEB-INF/lib/guice-servlet-2.0.jar,
+                        WEB-INF/lib/gwtexporter-2.0.10.jar,
+                        WEB-INF/lib/mvel2-2.0.18-RC4.jar,
+                        WEB-INF/lib/overlord-commons-config-${overlord-commons.version}.jar,
+                        WEB-INF/lib/reflections-0.9.5-RC2_jboss-SP1.jar,
+                        WEB-INF/lib/report-shared-1.4.2.Final.jar
+                      </Bundle-ClassPath>
+                    </manifestEntries>
+                  </archive>
+                </configuration>
+              </plugin>
+            </plugins>
+          </build>
+        </profile>
+
     </profiles>
 
 
