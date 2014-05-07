@@ -8,7 +8,13 @@
         <error-code>403</error-code>
         <location>/403.html</location>
     </error-page>
-    
+
+    <listener>
+      <listener-class>
+        org.jboss.bpm.console.server.ConfigListener
+      </listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>RestProxy</servlet-name>
         <servlet-class>org.jboss.bpm.console.server.RestProxyServlet</servlet-class>
