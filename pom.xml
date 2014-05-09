@@ -9,6 +9,12 @@
 
     <description>BPM Management console used by Riftsaw, jBPM and Drools Flow</description>
 
+    <parent>
+        <groupId>org.jboss.integration-platform</groupId>
+        <artifactId>jboss-integration-platform-parent</artifactId>
+        <version>6.0.0.CR8</version>
+    </parent>
+
     <url>
         http://github.com/heiko-braun/bpm-console
     </url>
@@ -63,11 +69,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <commons.fileupload.version>1.2.1</commons.fileupload.version>
-        <commons.io.version>1.4</commons.io.version>
-        <commons.logging.version>1.1.1</commons.logging.version>
-        <commons-lang.version>2.4</commons-lang.version>
-        <commons-config.version>1.6</commons-config.version>
+
         <gson.version>1.2.2</gson.version>
         <gwt.version>2.0.4</gwt.version>
 
@@ -76,21 +78,22 @@
         <javax.ejb.version>3.0</javax.ejb.version>
         <javax.jaxb.version>2.1</javax.jaxb.version>
         <jboss.common.version>2.2.7.GA</jboss.common.version>
+        <jdom.version>1.0</jdom.version>
+        <json-lib.version>2.2.3</json-lib.version>
         <junit.version>3.8.1</junit.version>
         <mvc4g.version>1.0.0-jboss</mvc4g.version>
         <!--mosaic.version>0.4.0-rc4</mosaic.version-->
-        <resteasy.version>2.2.1.GA</resteasy.version>
         <stax-api.version>1.0-2</stax-api.version>
         <report.server.version>1.4.2.Final</report.server.version>
 
         <errai.version>1.1-Final</errai.version>
         <mvel.version>2.0.18-RC4</mvel.version>
         <guice.version>2.0</guice.version>
-        <slf4j.version>1.6.0</slf4j.version>
+
         <overlord-commons.version>2.0.1-SNAPSHOT</overlord-commons.version>
         <picketlink.version>2.5.3.SP4</picketlink.version>
 
-        <activity.monitor.version>1.2.1.Final</activity.monitor.version>
+        <activity.monitor.version>1.2.2-SNAPSHOT</activity.monitor.version>
     </properties>
 
     <modules>
@@ -103,16 +106,85 @@
     <dependencyManagement>
         <dependencies>
 
+            <!-- Imported dependencies -->
             <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${commons-lang.version}</version>
+                <groupId>org.jboss.integration-platform</groupId>
+                <artifactId>jboss-integration-platform-bom</artifactId>
+                <version>6.0.0.CR8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Internal dependencies -->
+
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-rpc</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-rpc</artifactId>
+                <version>${project.version}</version>
+                <classifier>sources</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-server-integration</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-profile-riftsaw</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-profile-jbpm</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>commons-configuration</groupId>
-                <artifactId>commons-configuration</artifactId>
-                <version>${commons-config.version}</version>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+                <classifier>riftsaw</classifier>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-server</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+                <classifier>riftsaw</classifier>
+            </dependency>
+
+            <!-- Overlord commons -->
+            <dependency>
+                <groupId>org.overlord</groupId>
+                <artifactId>overlord-commons-services</artifactId>
+                <version>${overlord-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.overlord</groupId>
+                <artifactId>overlord-commons-auth</artifactId>
+                <version>${overlord-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.overlord</groupId>
+                <artifactId>overlord-commons-auth-jetty8</artifactId>
+                <version>${overlord-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.overlord</groupId>
+                <artifactId>overlord-commons-config</artifactId>
+                <version>${overlord-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.overlord</groupId>
+                <artifactId>overlord-commons-osgi</artifactId>
+                <version>${overlord-commons.version}</version>
             </dependency>
 
             <!-- GWT related -->
@@ -124,6 +196,11 @@
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-user</artifactId>
+                <version>${gwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-dev</artifactId>
                 <version>${gwt.version}</version>
             </dependency>
 
@@ -143,6 +220,17 @@
                 <version>${mvc4g.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.google.code.guice</groupId>
+                <artifactId>guice</artifactId>
+                <version>${guice.version}</version>
+            </dependency>         
+            <dependency>
+                <groupId>com.google.code.guice</groupId>
+                <artifactId>guice</artifactId>
+                <classifier>aopalliance</classifier>
+                <version>${guice.version}</version>
+            </dependency>         
 
             <!-- Mosaic -->
             <!--dependency>
@@ -168,10 +256,13 @@
             </dependency-->
 
             <!-- Other -->
+
+            <!-- Version override required as otherwise GWT compilation error in gui/war
+                due to old Errai version use of mvel -->
             <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>${commons.logging.version}</version>
+                <groupId>org.mvel</groupId>
+                <artifactId>mvel2</artifactId>
+                <version>2.0.18-RC4</version>
             </dependency>
 
             <dependency>
@@ -188,6 +279,12 @@
                 <groupId>javax.xml.bind</groupId>
                 <artifactId>jaxb-api</artifactId>
                 <version>${javax.jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${javax.jaxb.version}</version>
+                <classifier>sources</classifier>
             </dependency>
             <dependency>
                 <groupId>javax.xml</groupId>
@@ -212,26 +309,7 @@
                 <version>${jboss.common.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jaxrs</artifactId>
-                <version>${resteasy.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-multipart-provider</artifactId>
-                <version>${resteasy.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-fileupload</groupId>
-                <artifactId>commons-fileupload</artifactId>
-                <version>${commons.fileupload.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons.io.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>org.jboss.bpm</groupId>
                 <artifactId>report-core</artifactId>
@@ -249,7 +327,35 @@
                 <version>${report.server.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.jboss.javaee</groupId>
+                <artifactId>jboss-javaee</artifactId>
+                <version>5.0.0.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.json-lib</groupId>
+                <artifactId>json-lib</artifactId>
+                <version>${json-lib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jdom</groupId>
+                <artifactId>jdom</artifactId>
+                <version>${jdom.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.picketlink</groupId>
+                <artifactId>picketlink-federation</artifactId>
+                <version>${picketlink.version}</version>
+            </dependency>
+
             <!-- Errai -->
+            <dependency>
+                <groupId>org.jboss.errai</groupId>
+                <artifactId>errai-ioc</artifactId>
+                <version>${errai.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.jboss.errai</groupId>
                 <artifactId>errai-workspaces</artifactId>
@@ -270,6 +376,13 @@
             <dependency>
                 <groupId>org.jboss.errai</groupId>
                 <artifactId>errai-common</artifactId>
+                <version>${errai.version}</version>
+                <classifier>sources</classifier>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.errai</groupId>
+                <artifactId>errai-widgets</artifactId>
                 <version>${errai.version}</version>
                 <classifier>sources</classifier>
             </dependency>
@@ -330,10 +443,21 @@
 
             <dependency>
                 <groupId>org.jboss.bpm</groupId>
-                <artifactId>activity-monitor-ui-lib</artifactId>
+                <artifactId>activity-monitor-model</artifactId>
+                <version>${activity.monitor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>activity-monitor-model</artifactId>
+                <classifier>sources</classifier>
                 <version>${activity.monitor.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>activity-monitor-ui-lib</artifactId>
+                <version>${activity.monitor.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.jboss.bpm</groupId>
                 <artifactId>activity-monitor-ui-lib</artifactId>
