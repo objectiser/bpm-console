@@ -19,5 +19,7 @@
   <modules>
     <module>profiles</module>
     <module>war</module>    
+    <module>war/eap6</module>    
+    <module>war/fuse61</module>    
   </modules>
 </project>

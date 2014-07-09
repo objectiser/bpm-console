@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- Parent -->
+  <parent>
+    <groupId>org.jboss.bpm</groupId>
+    <artifactId>gwt-console-servermodule</artifactId>
+    <version>2.4.6-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <name>JBoss BPM - Console::Server::Webapp::Fuse61</name>
+  <artifactId>gwt-console-server-fuse61</artifactId>
+  <packaging>war</packaging>
+
+  <dependencies>
+    <!-- The base WAR being extended -->
+    <dependency>
+      <groupId>org.jboss.bpm</groupId>
+      <artifactId>gwt-console-server</artifactId>
+      <type>war</type>
+      <classifier>riftsaw</classifier>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>regex-property</id>
+            <goals>
+              <goal>regex-property</goal>
+            </goals>
+            <configuration>
+              <name>project.version.osgi</name>
+              <value>${project.version}</value>
+              <regex>-SNAPSHOT</regex>
+              <replacement>.Snapshot</replacement>
+              <failIfNoMatch>false</failIfNoMatch>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <overlays>
+            <overlay>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>gwt-console-server</artifactId>
+              <classifier>riftsaw</classifier>
+              <excludes>
+                <exclude>WEB-INF/lib/*.jar</exclude>
+              </excludes>
+            </overlay>
+          </overlays>
+          <archive>
+            <manifestEntries>
+              <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+              <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+              <Bundle-Version>${project.version.osgi}</Bundle-Version>
+              <Bundle-Name>${project.name}</Bundle-Name>
+              <Web-ContextPath>/bpel-console-server</Web-ContextPath>
+              <Webapp-Context>/bpel-console-server</Webapp-Context>
+              <Import-Package>
+                    javax.servlet.http,
+                    javax.servlet,
+                    org.slf4j,
+                    org.slf4j.spi,
+                    org.apache.commons.io,
+                    javax.xml.transform.stream,
+                    javax.xml.namespace,
+                    javax.xml.datatype,
+                    javax.xml.bind,
+                    javax.ws.rs.core,
+                    javax.ws.rs,
+                    javax.xml.transform,
+                    javax.naming,
+                    javax.activation,
+                    org.eclipse.jetty.plus.jaas,
+                    org.eclipse.jetty.server.handler,
+                    org.eclipse.jetty.servlet,
+                    org.eclipse.jetty.security,
+                    org.eclipse.jetty.jndi,
+                    org.jboss.resteasy.util,
+                    org.jboss.resteasy.plugins.interceptors,
+                    org.jboss.resteasy.plugins.interceptors.encoding,
+                    org.jboss.resteasy.plugins.server.servlet,
+                    org.jboss.resteasy.plugins.providers,
+                    org.jboss.resteasy.plugins.providers.jaxb,
+                    org.jboss.resteasy.plugins.providers.multipart,
+                    org.jboss.resteasy.annotations.providers.multipart,
+                    org.apache.karaf.jaas.boot.principal,
+                    com.google.gson,
+                    org.jboss.bpm.report,
+                    org.jboss.bpm.report.util,
+                    org.overlord.commons.auth.util,
+                    org.overlord.commons.auth.filters,
+                    org.jboss.bpm.console.server.plugin,
+                    org.jboss.bpm.console.server.integration,
+                    org.jboss.bpm.console.client.model
+              </Import-Package>
+              <Bundle-ClassPath>.,WEB-INF/classes</Bundle-ClassPath>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

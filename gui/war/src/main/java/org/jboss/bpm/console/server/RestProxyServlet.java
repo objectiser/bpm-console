@@ -23,10 +23,12 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -58,6 +60,9 @@ public class RestProxyServlet extends HttpServlet {
     public static final String AUTH_PROVIDER = "bpel-console.rest-proxy.authentication.provider"; //$NON-NLS-1$
     public static final String BASIC_AUTH_USER = "bpel-console.rest-proxy.authentication.basic.user"; //$NON-NLS-1$
     public static final String BASIC_AUTH_PASS = "bpel-console.rest-proxy.authentication.basic.password"; //$NON-NLS-1$
+    
+    private static final Set<String> excludedRequestHeaders = new HashSet<String>();
+    private static final Set<String> excludedResponseHeaders = new HashSet<String>();
 
     public static Configuration appconfig;
     static {
@@ -74,6 +79,11 @@ public class RestProxyServlet extends HttpServlet {
                 refreshDelay,
                 null,
                 RestProxyServlet.class);
+        
+        excludedRequestHeaders.add("cookie");
+        
+        excludedResponseHeaders.add("set-cookie");
+        excludedResponseHeaders.add("transfer-encoding");
     }
     
     private String proxyUrl;
@@ -151,22 +161,28 @@ public class RestProxyServlet extends HttpServlet {
             urlStr = urlStr + "?" + queryString;
         }
         URL url = new URL(urlStr);
-        System.out.println("Proxying: " + url);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         if (isPost) {
             conn.setDoOutput(true);
-            System.out.println("            ^^^^^^^^ is a POST");
         }
         conn.setRequestMethod("GET");
+
+        // Set the cookie
+        String cookie = (String) req.getSession().getAttribute("PROXY_COOKIE");
+        if (cookie != null) {
+            conn.addRequestProperty("Cookie", cookie);
+        }
 
         // Proxy all of the request headers.
         Enumeration<?> headerNames = req.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String headerName = String.valueOf(headerNames.nextElement());
-            Enumeration<?> headerValues = req.getHeaders(headerName);
-            while (headerValues.hasMoreElements()) {
-                String headerValue = String.valueOf(headerValues.nextElement());
-                conn.addRequestProperty(headerName, headerValue);
+            if (!excludedRequestHeaders.contains(headerName.toLowerCase())) {
+                Enumeration<?> headerValues = req.getHeaders(headerName);
+                while (headerValues.hasMoreElements()) {
+                    String headerValue = String.valueOf(headerValues.nextElement());
+                    conn.addRequestProperty(headerName, headerValue);
+                }
             }
         }
 
@@ -194,10 +210,15 @@ public class RestProxyServlet extends HttpServlet {
             // Proxy the response headers
             for (Entry<String, List<String>> entry : conn.getHeaderFields().entrySet()) {
                 String respHeaderName = entry.getKey();
-                if (respHeaderName != null && !respHeaderName.equalsIgnoreCase("transfer-encoding")) {
+                if (respHeaderName != null && !excludedResponseHeaders.contains(respHeaderName.toLowerCase())) {
                     for (String respHeaderValue : entry.getValue()) {
                         resp.addHeader(respHeaderName, respHeaderValue);
                     }
+                }
+                // Remember the cookie
+                if ("set-cookie".equalsIgnoreCase(respHeaderName)) {
+                    cookie = entry.getValue().get(0);
+                    req.getSession().setAttribute("PROXY_COOKIE", cookie);
                 }
             }
 

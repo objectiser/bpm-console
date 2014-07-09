@@ -27,17 +27,35 @@
     <!-- The UI WAR -->
     <dependency>
       <groupId>org.jboss.bpm</groupId>
-      <artifactId>gwt-console</artifactId>
+      <artifactId>gwt-console-fuse61</artifactId>
       <type>war</type>
-      <classifier>riftsaw</classifier>
     </dependency>
 
     <!-- The Server WAR -->
     <dependency>
       <groupId>org.jboss.bpm</groupId>
-      <artifactId>gwt-console-server</artifactId>
+      <artifactId>gwt-console-server-fuse61</artifactId>
       <type>war</type>
-      <classifier>riftsaw</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.bpm</groupId>
+      <artifactId>gwt-console-server</artifactId>
+      <type>jar</type>
+      <classifier>classes</classifier>
+      <exclusions>
+        <exclusion>
+          <artifactId>slf4j-api</artifactId>
+          <groupId>org.slf4j</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>overlord-commons-auth</artifactId>
+          <groupId>org.overlord</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <groupId>org.slf4j</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- Additional project JARs -->
@@ -81,6 +99,14 @@
           <artifactId>hibernate-entitymanager</artifactId>
           <groupId>org.hibernate</groupId>
         </exclusion>
+        <exclusion>
+          <artifactId>slf4j-log4j12</artifactId>
+          <groupId>org.slf4j</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>slf4j-api</artifactId>
+          <groupId>org.slf4j</groupId>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
@@ -123,32 +149,6 @@
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.overlord</groupId>
-      <artifactId>overlord-commons-services</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.overlord</groupId>
-      <artifactId>overlord-commons-osgi</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.overlord</groupId>
-      <artifactId>overlord-commons-auth</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.overlord</groupId>
-      <artifactId>overlord-commons-auth-jetty8</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.picketlink</groupId>
-      <artifactId>picketlink-federation</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>log4j</artifactId>
-          <groupId>log4j</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>    
   </dependencies>
 
   <build>
@@ -166,6 +166,9 @@
             <configuration>
               <outputFile>${project.build.directory}/features.xml</outputFile>
               <attach>true</attach>
+              <repositories>
+                <repository>mvn:org.overlord/overlord-commons-dist-fuse6/${overlord-commons.version}/xml/features</repository>
+              </repositories>
               <features>
                 <!-- All BPM Console Dependencies -->
                 <feature>
@@ -173,7 +176,31 @@
                   <version>${project.version}</version>
                   <comment>All BPM console dependencies</comment>
                   <excludes>
-                    <exclude>*:*:war</exclude>
+                    <exclude>org.overlord:overlord-commons-*:*</exclude>
+                    <exclude>org.jboss.bpm:*:*</exclude>
+                  </excludes>
+                </feature>
+                <!-- The BPM Console Modules -->
+                <feature>
+                  <name>bpm-console-modules</name>
+                  <version>${project.version}</version>
+                  <comment>All BPM console modules</comment>
+                  <dependsOnFeatures>
+                    <feature>
+                      <name>overlord-commons</name>
+                      <version>${overlord-commons.version}</version>
+                    </feature>
+                    <feature>
+                      <name>bpm-console-dependencies</name>
+                      <version>${project.version}</version>
+                    </feature>
+                  </dependsOnFeatures>
+                  <includes>
+                    <include>org.jboss.bpm:*:*</include>
+                  </includes>
+                  <excludes>
+                    <exclude>org.jboss.bpm:*:war</exclude>
+                    <exclude>org.jboss.bpm:gwt-console-server:*</exclude>
                   </excludes>
                 </feature>
                 <!-- The BPM Console WARs -->
@@ -186,12 +213,16 @@
                       <name>war</name>
                     </feature>
                     <feature>
-                      <name>bpm-console-dependencies</name>
+                      <name>overlord-commons-idp</name>
+                    </feature>
+                    <feature>
+                      <name>bpm-console-modules</name>
                       <version>${project.version}</version>
                     </feature>
                   </dependsOnFeatures>
                   <includes>
-                    <include>org.jboss.bpm:gwt-console*:war</include>
+                    <include>org.jboss.bpm:gwt-console-server-fuse61:war</include>
+                    <include>org.jboss.bpm:gwt-console-fuse61:war</include>
                   </includes>
                 </feature>
               </features>

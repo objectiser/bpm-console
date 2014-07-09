@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.jboss.integration-platform</groupId>
         <artifactId>jboss-integration-platform-parent</artifactId>
-        <version>6.0.0.CR8</version>
+        <version>6.0.0.CR9</version>
     </parent>
 
     <url>
@@ -90,7 +90,8 @@
         <mvel.version>2.0.18-RC4</mvel.version>
         <guice.version>2.0</guice.version>
 
-        <overlord-commons.version>2.0.1-SNAPSHOT</overlord-commons.version>
+        <overlord-commons.version>2.0.2.Final</overlord-commons.version>
+        <picketbox.version>4.0.19.SP4</picketbox.version>
         <picketlink.version>2.5.3.SP4</picketlink.version>
 
         <activity.monitor.version>1.2.2-SNAPSHOT</activity.monitor.version>
@@ -110,13 +111,38 @@
             <dependency>
                 <groupId>org.jboss.integration-platform</groupId>
                 <artifactId>jboss-integration-platform-bom</artifactId>
-                <version>6.0.0.CR8</version>
+                <version>6.0.0.CR9</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
 
             <!-- Internal dependencies -->
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-fuse61</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-server-fuse61</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
 
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-server</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bpm</groupId>
+                <artifactId>gwt-console-server</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
             <dependency>
                 <groupId>org.jboss.bpm</groupId>
                 <artifactId>gwt-console-rpc</artifactId>
@@ -184,6 +210,11 @@
             <dependency>
                 <groupId>org.overlord</groupId>
                 <artifactId>overlord-commons-osgi</artifactId>
+                <version>${overlord-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.overlord</groupId>
+                <artifactId>overlord-commons-gwt</artifactId>
                 <version>${overlord-commons.version}</version>
             </dependency>
 
@@ -344,6 +375,11 @@
                 <version>${jdom.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.picketbox</groupId>
+                <artifactId>picketbox</artifactId>
+                <version>${picketbox.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.picketlink</groupId>
                 <artifactId>picketlink-federation</artifactId>

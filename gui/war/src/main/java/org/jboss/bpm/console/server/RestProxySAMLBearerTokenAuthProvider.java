@@ -72,6 +72,7 @@ public class RestProxySAMLBearerTokenAuthProvider implements RestProxyAuthProvid
             try {
                 KeyStore keystore = SAMLBearerTokenUtil.loadKeystore(getKeystorePath(), getKeystorePassword());
                 KeyPair keyPair = SAMLBearerTokenUtil.getKeyPair(keystore, getAlias(), getAliasPassword());
+                // TODO cache the keypair
                 samlAssertion = SAMLBearerTokenUtil.signSAMLAssertion(samlAssertion, keyPair);
             } catch (Exception e) {
                 throw new RuntimeException(e);
