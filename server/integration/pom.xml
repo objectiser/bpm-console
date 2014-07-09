@@ -2,9 +2,8 @@
 
   <modelVersion>4.0.0</modelVersion>
   <name>JBoss BPM - Console::Server::Integration</name>
-  <groupId>org.jboss.bpm</groupId>
   <artifactId>gwt-console-server-integration</artifactId>
-  <packaging>jar</packaging>
+  <packaging>bundle</packaging>
 
   <!-- Parent -->
   <parent>
@@ -59,16 +58,6 @@
   </dependencies>
 
   <build>
-    <!--  Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
-    <!--resources>
-      <resource>
-        <directory>src/main/java</directory>
-      </resource>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources-->
-
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -78,6 +67,20 @@
           <target>1.5</target>
         </configuration>
       </plugin>    
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <extensions>true</extensions>
+          <configuration>
+            <instructions>
+              <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+              <Bundle-Name>${project.name}</Bundle-Name>
+              <Bundle-Version>${project.version}</Bundle-Version>
+              <Export-Package>org.jboss.bpm.console.server.integration,org.jboss.bpm.console.server.plugin,org.jboss.bpm.console.server.utils</Export-Package>
+              <Import-Package>javax.transaction,javax.naming,javax.activation,org.jboss.bpm.console.client.model,org.apache.commons.logging,org.overlord.commons.services</Import-Package>
+            </instructions>
+          </configuration>
+        </plugin>
     </plugins>
     <finalName>gwt-console-server-integration</finalName>
   </build>

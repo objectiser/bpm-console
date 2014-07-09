@@ -4,7 +4,6 @@
 
   <modelVersion>4.0.0</modelVersion>
   <name>JBoss BPM - Console::Server</name>
-  <groupId>org.jboss.bpm</groupId>
   <artifactId>gwt-console-servermodule</artifactId>
   <packaging>pom</packaging>
 
@@ -17,7 +16,9 @@
   </parent>
 
   <modules>
-    <module>war</module>
     <module>integration</module>
+    <module>war</module>
+    <module>war/eap6</module>
+    <module>war/fuse61</module>
   </modules>
 </project>
