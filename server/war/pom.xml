@@ -18,6 +18,7 @@
     <dependency>
       <groupId>org.jboss.bpm</groupId>
       <artifactId>gwt-console-server-integration</artifactId>
+      <scope>provided</scope>
     </dependency>
 
     <!-- GWT related -->
@@ -36,6 +37,25 @@
     <dependency>
         <groupId>org.overlord</groupId>
         <artifactId>overlord-commons-auth</artifactId>
+        <exclusions>
+            <!-- Exclude as defined in bpel component (module) -->
+            <exclusion>
+                <groupId>org.overlord</groupId>
+                <artifactId>overlord-commons-services</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.overlord</groupId>
+        <artifactId>overlord-commons-auth-jboss7</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.overlord</groupId>
+        <artifactId>overlord-commons-auth-jetty8</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.overlord</groupId>
+        <artifactId>overlord-commons-auth-tomcat7</artifactId>
     </dependency>
     <dependency>
          <groupId>org.slf4j</groupId>

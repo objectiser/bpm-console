@@ -11,19 +11,20 @@
   ~ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
   ~ MA  02110-1301, USA.
   -->
-<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.0">
+<jboss-deployment-structure>
 <deployment>
      <dependencies>
           <module name="org.slf4j" />
           <module name="org.picketbox" />
           <module name="org.picketlink" />
-          <module name="org.overlord.commons.overlord-commons-services" />
-          <module name="org.overlord.commons.overlord-commons-auth" />
           <module name="org.jboss.as.web" />
           <module name="org.jboss.resteasy.resteasy-jaxrs" />
           <module name="org.jboss.resteasy.resteasy-jaxb-provider" />
           <module name="org.jboss.resteasy.resteasy-multipart-provider" />
           <module name="org.switchyard.component.bpel" services="import"/>
      </dependencies>
+     <exclude-subsystems>
+          <subsystem name="webservices" />
+     </exclude-subsystems>
  </deployment>
 </jboss-deployment-structure>
