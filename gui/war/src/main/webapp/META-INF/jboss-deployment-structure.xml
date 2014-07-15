@@ -16,12 +16,14 @@
       <module name="org.picketbox" />
       <module name="org.picketlink" />
       <module name="org.jboss.resteasy.resteasy-jaxrs" />
-      <module name="org.overlord.commons.overlord-commons-auth" />
       <module name="org.apache.httpcomponents" />
       <module name="org.apache.commons.codec" />
       <module name="org.apache.commons.configuration" />
       <module name="org.apache.commons.lang" />
       <module name="org.switchyard.component.bpel" />
     </dependencies>
+    <exclude-subsystems>
+      <subsystem name="webservices" />
+    </exclude-subsystems>
   </deployment>
 </jboss-deployment-structure>
