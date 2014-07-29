@@ -17,12 +17,12 @@ Note: Make sure you replace ${project.version} above with the appropriate versio
 Currently you will also need a bpel-console.properties configuration file located in 
 fuse/etc with properties set something like this:
 
-    bpel-console.rest-proxy.proxy-url=http://localhost:8181/bpel-console-server/rs/
+    bpel-console.rest-proxy.proxy-url=${overlord.baseUrl}/bpel-console-server/rs/
     bpel-console.rest-proxy.authentication.provider=org.jboss.bpm.console.server.RestProxySAMLBearerTokenAuthProvider
     bpel-console.rest-proxy.authentication.saml.issuer=/bpel-console
     bpel-console.rest-proxy.authentication.saml.service=/bpel-console-server
     bpel-console.rest-proxy.authentication.saml.sign-assertions=true
-    bpel-console.rest-proxy.authentication.saml.keystore=${karaf.home}/etc/overlord-saml.keystore
-    bpel-console.rest-proxy.authentication.saml.keystore-password=samlkeystore77
-    bpel-console.rest-proxy.authentication.saml.key-alias=overlord
-    bpel-console.rest-proxy.authentication.saml.key-password=overlord99
+    bpel-console.rest-proxy.authentication.saml.keystore=${overlord.auth.saml-keystore}
+    bpel-console.rest-proxy.authentication.saml.keystore-password=${overlord.auth.saml-keystore-password}
+    bpel-console.rest-proxy.authentication.saml.key-alias=${overlord.auth.saml-key-alias}
+    bpel-console.rest-proxy.authentication.saml.key-password=${overlord.auth.saml-key-alias-password}
