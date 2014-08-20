@@ -52,8 +52,8 @@ org.ops4j.pax.url.mvn.repositories= \
 * Create a file called etc/overlord.properties with contents:
 
 ```
-    overlord.auth.saml-key-alias=overlord
-    overlord.port=8181
+overlord.port=8181
+overlord.baseUrl=http\://localhost\:${overlord.port}
 ```
 
 Once that is done you can simply fire up Fuse and run the following commands:
