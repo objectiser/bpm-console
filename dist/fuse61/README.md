@@ -9,6 +9,7 @@ After unpacking Fuse 6.1, you need to perform the following steps before launchi
 
 * Add the following element in the etc/jetty.xml file, under the top level <Configure> element:
 
+```
     <Call name="addBean">
         <Arg>
             <New class="org.eclipse.jetty.plus.jaas.JAASLoginService">
@@ -22,17 +23,21 @@ After unpacking Fuse 6.1, you need to perform the following steps before launchi
             </New>
         </Arg>
     </Call>
+```
 
 * Add the following additional line at the end of the etc/org.ops4j.pax.url.mvn.cfg file:
 
-    org.ops4j.pax.url.mvn.repositories= \
+```
+org.ops4j.pax.url.mvn.repositories= \
         .... , \
         https://repository.jboss.org/nexus/content/groups/public@id=jboss.public
+```
 
 * Unpack the xmlseczip attachment, found on this forum post (https://community.jboss.org/wiki/S-RAMPDeploymentOnFuse61WithAndWithoutFabric), over the fuse installation
 
 * Create a file called etc/bpel-console.properties with contents:
 
+```
     bpel-console.rest-proxy.proxy-url=${overlord.baseUrl}/bpel-console-server/rs/
     bpel-console.rest-proxy.authentication.provider=org.jboss.bpm.console.server.RestProxySAMLBearerTokenAuthProvider
     bpel-console.rest-proxy.authentication.saml.issuer=/bpel-console
@@ -42,12 +47,14 @@ After unpacking Fuse 6.1, you need to perform the following steps before launchi
     bpel-console.rest-proxy.authentication.saml.keystore-password=${overlord.auth.saml-keystore-password}
     bpel-console.rest-proxy.authentication.saml.key-alias=${overlord.auth.saml-key-alias}
     bpel-console.rest-proxy.authentication.saml.key-password=${overlord.auth.saml-key-alias-password}
+```
 
 * Create a file called etc/overlord.properties with contents:
 
+```
     overlord.auth.saml-key-alias=overlord
     overlord.port=8181
-
+```
 
 Once that is done you can simply fire up Fuse and run the following commands:
 
@@ -59,15 +66,18 @@ Once completed, you will need to edit the etc/users.properties file to add ",ove
 
 * Install the BPEL console
 
+```
     features:addurl mvn:org.jboss.bpm/gwt-console-dist-fuse61/${project.version}/xml/features
     features:install -v bpm-console
+```
 
 Note: Make sure you replace ${project.version} above with the appropriate version string.
 
 * Create SAML Keystore
 
+```
     overlord:generatesamlkeystore <password>
-
+```
 
 At this point, you will need to exit the console and restart fuse. Once restarted, navigate to the console at the URL: http://localhost:8181/bpel-console
 
